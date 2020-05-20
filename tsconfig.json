@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "ESNext",
+    "jsx": "react",
+    "moduleResolution": "Node",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "paths": {
+      "@page/*": ["page/*"],
+      "@less/**/*": ["less/*"],
+      "@router/*": ["router/**/*"],
+      "@store/*": ["store/*"],
+      "@util/*": ["util/*"],
+      "@img/*": ["assers/img/*"],
+      "@config/*": ["config/*"],
+      "@component/*": ["page/component/*"],
+      "@api/*": ["api/*"]
+    }, // 模块名到基于 baseUrl 的路径映射的列表
+    "baseUrl": "./src",
+    "includes": ["./types/typings.d.ts"]
+  }
+}

@@ -1,0 +1,62 @@
+@import "~@less/helper.less";
+.layoutPage {
+  height: 100%;
+}
+
+.sider {
+  .mixinStyle();
+}
+
+.logo {
+  font-weight: 600;
+  height: 64px;
+  text-align: center;
+  line-height: 64px;
+  box-shadow: 0 1px 9px -3px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  background: #001529;
+  cursor: pointer;
+}
+.logoMin {
+  font-size: 14px;
+}
+.Menu {
+  padding-top: 20px;
+  height: 100%;
+}
+
+.header {
+  .mixinStyle();
+
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 !important;
+
+  .userLogo {
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    .userName {
+      font-size: 15px;
+      padding-left: 5px;
+    }
+    .userLogo_img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .hiddenIcon {
+    cursor: pointer;
+    padding-left: 8px;
+  }
+}
+
+.content {
+    display: flex;
+    margin-top:2px;
+    // margin: 30px 0 0 30px !important;
+  }
+  

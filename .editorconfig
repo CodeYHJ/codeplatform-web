@@ -1,0 +1,26 @@
+  
+# https://editorconfig.org
+
+root = true
+
+# 匹配所有文件
+[*]
+# 编码格式
+charset = utf-8
+# tab形式：hard-tabs与space
+indent_style = space
+# 每级缩进
+indent_size = 2
+# 结束的编码
+end_of_line = lf
+# 文本结束后，底部以新行结尾
+insert_final_newline = true
+# 新建空行，移除所有空格字符
+trim_trailing_whitespace = true
+
+# 匹配以.md结尾的文件
+
+[*.md]
+
+insert_final_newline = false
+trim_trailing_whitespace = false
