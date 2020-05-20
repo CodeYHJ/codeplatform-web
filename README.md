@@ -32,11 +32,11 @@
 - webpack（自定义配置）
 - less
 
-[地址](https://gitee.com/colgateyhj/codePlatform)
+[地址](https://github.com/CodeYHJ/codeplatform-web)
 
 ### 后端
 
-[地址](https://gitee.com/colgateyhj/codePlatform-Api)
+[地址](https://github.com/CodeYHJ/codeplatform-api)
 
 ## 前端项目结构
 
@@ -82,18 +82,10 @@
 
 ### 任务记录
 
-- [x] 任务记录
-- 两种模式：循环模式、时间段模式
-  - [x] 循环模式
-  - [x] 时间段模式
-  - [x] 每天凌晨 🕛，后台根据模式，自动更新任务状态
+- [x] 任务看板
 
 ### 用户
 
 - [x] 更改用户头像与密码
 - [x] 添加 Token 功能
 
-### Token 的使用
-
-- [ ] 雨雀平台作为网上编辑平台，个人博客站点作为展示平台
-- [ ] 平台订阅信息功能
