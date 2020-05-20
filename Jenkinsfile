@@ -3,18 +3,18 @@ pipeline {
 
     stages {
 
-        stage('git clone test') {
+        stage('git clone master') {
             when {
-               branch 'test'
+               branch 'master'
             }
             steps {
-                git branch: 'test', credentialsId: '05397554-60cc-442a-8d6c-bd74e31af744', url: 'https://gitee.com/colgateyhj/codePlatform'
+                git branch: 'master', credentialsId: 'github_codeplatform_web', url: 'https://github.com/CodeYHJ/codeplatform-web'
             }
         }
 
-        stage('pretest install') {
+        stage('master install') {
             when {
-               branch 'test'
+               branch 'master'
             }
             steps {
                 nodejs('nodejs12.13.1') {
@@ -22,16 +22,16 @@ pipeline {
                 sh 'npm install -g yarn --registry=https://registry.npm.taobao.org'
                 sh 'yarn install'
                 sh 'yarn dll'
-                sh 'yarn build:pretest'
+                sh 'yarn build:pro'
                }
             }
         }
-        stage('pretest deploy') {
+        stage('master deploy') {
             when {
-               branch 'test'
+               branch 'master'
             }
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'QQ Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/pretest', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/admin/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'QQ Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/admin/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
 
@@ -40,7 +40,7 @@ pipeline {
                branch 'develop'
             }
             steps {
-                 git branch: 'develop', credentialsId: '05397554-60cc-442a-8d6c-bd74e31af744', url: 'https://gitee.com/colgateyhj/codePlatform'
+                 git branch: 'develop', credentialsId: 'github_codeplatform_web', url: 'https://github.com/CodeYHJ/codeplatform-web'
             }
         }
 
@@ -54,7 +54,7 @@ pipeline {
                     sh 'npm install -g yarn --registry=https://registry.npm.taobao.org'
                     sh 'yarn install'
                     sh 'yarn dll'
-                    sh 'yarn build:pro'
+                    sh 'yarn build:pretest'
                }
             }
         }
@@ -64,7 +64,7 @@ pipeline {
                branch 'develop'
             }
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'QQ Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/admin/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'QQ Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/pretest', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/admin/**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
         stage('delete all'){
