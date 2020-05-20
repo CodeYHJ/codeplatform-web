@@ -20,7 +20,7 @@ import baseConfig from "./webpack.config.base";
 
 import webpack from "webpack";
 
-import { pathFn } from "./util";
+import { pathFn } from "./utils";
 
 const smp = new SpeedMeasurePlugin();
 

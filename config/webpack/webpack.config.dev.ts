@@ -6,7 +6,7 @@ import TerserPlugin from "terser-webpack-plugin";
 
 import webpack from "webpack";
 
-import { pathFn } from "./util/index";
+import { pathFn } from "./utils";
 
 const devConfig: webpack.Configuration = {
   mode: "development",

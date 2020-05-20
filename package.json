@@ -7,10 +7,13 @@
   "license": "MIT",
   "scripts": {
     "webpack-ts": "cross-env TS_NODE_PROJECT=\"config/webpack/tsconfig-for-webpack-config.json\"",
-    "dll": "cross-env NODE_ENV=development yarn webpack-ts webpack --config ./config/webpack/webpack.config.dll.ts --mode=development",
-    "dev": "cross-env NODE_ENV=development yarn webpack-ts webpack-dev-server --config ./config/webpack/webpack.config.dev.ts --mode=development --port 8080 --hot",
-    "build:pretest": "cross-env NODE_ENV=production DEPLOY=pre yarn webpack-ts webpack --mode=production --config ./config/webpack/webpack.config.pro.ts",
-    "build:pro": "cross-env NODE_ENV=production DEPLOY=pro yarn webpack-ts webpack --mode=production --config ./config/webpack/webpack.config.pro.ts",
+    "cross-dev": "cross-env NODE_ENV=development",
+    "cross-pro": "cross-env NODE_ENV=production DEPLOY=pro",
+    "cross-pre": "cross-env NODE_ENV=production DEPLOY=pre",
+    "dll": "yarn cross-dev  yarn webpack-ts  webpack --config ./config/webpack/webpack.config.dll.ts",
+    "dev": "yarn cross-dev  yarn webpack-ts  webpack-dev-server --config ./config/webpack/webpack.config.dev.ts --hot",
+    "build:pretest": "yarn cross-pre && yarn webpack-ts webpack --config ./config/webpack/webpack.config.pro.ts",
+    "build:pro": "yarn cross-pro && yarn webpack-ts webpack --config ./config/webpack/webpack.config.pro.ts",
     "commit": "git add . && commit && git push",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },

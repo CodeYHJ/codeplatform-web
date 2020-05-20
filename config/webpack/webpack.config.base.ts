@@ -1,10 +1,10 @@
-import moduleConfig from "./util/moduleConfig";
+import moduleConfig from "./moduleConfig";
 
 import HtmlwebpackPlugin from "html-webpack-plugin";
 
 import webpack from "webpack";
 
-import { pathFn } from "./util/index";
+import { pathFn } from "./utils";
 
 const config: webpack.Configuration = {
   entry: pathFn("./src/app.tsx"),

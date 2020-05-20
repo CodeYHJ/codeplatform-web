@@ -1,7 +1,8 @@
 import webpack from "webpack";
-import { pathFn } from "./util";
+import { pathFn } from "./utils";
 
 const dllConfig = {
+  mode: "development",
   entry: {
     react: ["react", "react-dom", "react-router-dom"],
     antd: ["antd"],
