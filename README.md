@@ -47,16 +47,26 @@
 ├── README.md
 ├── commitlint.config.js
 ├── config
-│   ├── util
+│   ├── HTML
 │   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── injectCDN.js
-│   │   └── moduleConfig.js
-│   ├── webpack.config.base.js
-│   ├── webpack.config.dev.js
-│   ├── webpack.config.dll.js
-│   ├── webpack.config.pro.js
-│   └── webpack.config.test.js
+│   │   └── index.html
+│   └── webpack
+│       ├── moduleConfig.ts
+│       ├── tsconfig-for-webpack-config.json
+│       ├── utils.ts
+│       ├── webpack.config.base.ts
+│       ├── webpack.config.dev.ts
+│       ├── webpack.config.dll.ts
+│       └── webpack.config.pro.ts
+├── dll
+│   ├── antd.dll.js
+│   ├── antd.manifest.json
+│   ├── axios.dll.js
+│   ├── axios.manifest.json
+│   ├── bizcharts.dll.js
+│   ├── bizcharts.manifest.json
+│   ├── react.dll.js
+│   └── react.manifest.json
 ├── package.json
 ├── postcss.config.js
 ├── src
@@ -86,12 +96,11 @@
 │   │   ├── task
 │   │   └── user
 │   ├── types
-│   │   └── image.d.ts
+│   │   ├── image.d.ts
+│   │   └── typings.d.ts
 │   └── util
 │       └── index.tsx
 ├── tsconfig.json
-├── types
-│   └── typings.d.ts
 └── yarn.lock
 
 ```
