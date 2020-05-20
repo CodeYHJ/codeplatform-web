@@ -1,14 +1,14 @@
-const merge = require("webpack-merge");
+import merge from "webpack-merge";
 
-const baseConfig = require("./webpack.config.base");
+import baseConfig from "./webpack.config.base";
 
-const TerserPlugin = require("terser-webpack-plugin");
+import TerserPlugin from "terser-webpack-plugin";
 
-const webpack = require("webpack");
+import webpack from "webpack";
 
-const path = require("path");
+import { pathFn } from "./util/index";
 
-const devConfig = {
+const devConfig: webpack.Configuration = {
   mode: "development",
   devServer: {
     historyApiFallback: true,
@@ -37,22 +37,24 @@ const devConfig = {
   plugins: [
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require("../dll/react.manifest.json"),
+      manifest: require(pathFn("./dll/react.manifest.json")),
     }),
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require("../dll/antd.manifest.json"),
+      manifest: require(pathFn("./dll/antd.manifest.json")),
     }),
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require("../dll/bizcharts.manifest.json"),
+      manifest: require(pathFn("./dll/bizcharts.manifest.json")),
     }),
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require("../dll/axios.manifest.json"),
+      manifest: require(pathFn("./dll/axios.manifest.json")),
     }),
   ],
   devtool: "inline-source-map",
 };
 
-module.exports = merge(baseConfig, devConfig);
+const mergeConfig = merge(baseConfig, devConfig);
+
+export default mergeConfig;

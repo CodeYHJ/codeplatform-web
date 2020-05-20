@@ -12,7 +12,9 @@ import Loading from "@component/Loading"
 
 import { NotFound } from '@page/NotFound';
 
-import styles from './less/App.less'
+import styles from './app.less'
+import "./init.less";
+
 export interface AppProps {
 
 }
@@ -42,7 +44,6 @@ const App: React.SFC<AppProps> = () => {
                 </Provider>
             </Router>
         </div>
-
     );
 }
 

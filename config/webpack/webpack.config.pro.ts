@@ -1,34 +1,32 @@
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
+import BundleAnalyzerPlugin from "webpack-bundle-analyzer";
 
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-const optimizeCssPlugin = require("optimize-css-assets-webpack-plugin");
+import optimizeCssPlugin from "optimize-css-assets-webpack-plugin";
 
-const CompressionPlugin = require("compression-webpack-plugin");
+import CompressionPlugin from "compression-webpack-plugin";
 
-const TerserPlugin = require("terser-webpack-plugin");
+import TerserPlugin from "terser-webpack-plugin";
 
-const InjectCDN = require("./util/injectCDN");
+import HtmlwebpackPlugin from "html-webpack-plugin";
 
-const HtmlwebpackPlugin = require("html-webpack-plugin");
+import merge from "webpack-merge";
 
-const merge = require("webpack-merge");
+import baseConfig from "./webpack.config.base";
 
-const baseConfig = require("./webpack.config.base");
+import webpack from "webpack";
 
-const webpack = require("webpack");
-
-const path = require("path");
+import { pathFn } from "./util";
 
 const smp = new SpeedMeasurePlugin();
-const proConfig = {
+
+const proConfig: webpack.Configuration = {
   output: {
-    path: path.resolve(__dirname, "../admin"),
+    path: pathFn("./admin"),
     filename: `js/[name].[chunkhash].js`,
     chunkFilename: `js/[name].[chunkhash].js`,
     publicPath: "/",
@@ -38,8 +36,8 @@ const proConfig = {
     new CleanWebpackPlugin(),
     new HtmlwebpackPlugin({
       title: "admin",
-      template: path.resolve(__dirname, "./util/index.html"),
-      favicon: path.resolve(__dirname, "./util/favicon.ico"),
+      template: pathFn("./config/HTML/index.html"),
+      favicon: pathFn("./config/HTML/favicon.ico"),
       cdn: {
         js: [
           "https://cdn.bootcss.com/react/16.13.1/umd/react.production.min.js",
@@ -74,7 +72,7 @@ const proConfig = {
 
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require("../dll/antd.manifest.json"),
+      manifest: require("../../dll/antd.manifest.json"),
     }),
   ],
   optimization: {
@@ -106,6 +104,6 @@ const proConfig = {
     bizcharts: "BizCharts",
   },
 };
-// module.exports = smp.wrap(merge(baseConfig, proConfig));
-const mergeConfig = merge(baseConfig, proConfig);
-module.exports = smp.wrap(mergeConfig);
+const mergeConfig = smp.wrap(merge(baseConfig, proConfig));
+
+export default mergeConfig;

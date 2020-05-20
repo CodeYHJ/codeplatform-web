@@ -12,8 +12,7 @@
     "allowJs": true,
     "paths": {
       "@page/*": ["page/*"],
-      "@less/**/*": ["less/*"],
-      "@router/*": ["router/**/*"],
+      "@router/*": ["router/*"],
       "@store/*": ["store/*"],
       "@util/*": ["util/*"],
       "@img/*": ["assers/img/*"],
@@ -21,7 +20,6 @@
       "@component/*": ["page/component/*"],
       "@api/*": ["api/*"]
     }, // 模块名到基于 baseUrl 的路径映射的列表
-    "baseUrl": "./src",
-    "includes": ["./types/typings.d.ts"]
+    "baseUrl": "./src"
   }
 }

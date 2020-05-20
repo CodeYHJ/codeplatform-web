@@ -1,6 +1,5 @@
-const path = require("path");
-
-const webpack = require("webpack");
+import webpack from "webpack";
+import { pathFn } from "./util";
 
 const dllConfig = {
   entry: {
@@ -11,15 +10,14 @@ const dllConfig = {
   },
   output: {
     filename: "[name].dll.js",
-    path: path.resolve(__dirname, "../dll"),
+    path: pathFn("./dll"),
     library: "[name]_dll_[hash]",
   },
   plugins: [
     new webpack.DllPlugin({
       name: "[name]_dll_[hash]",
-      path: path.resolve(__dirname, "../dll", "[name].manifest.json"),
+      path: pathFn("./dll/[name].manifest.json"),
     }),
   ],
 };
-
-module.exports = dllConfig;
+export default dllConfig;

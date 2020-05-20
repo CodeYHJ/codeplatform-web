@@ -3,9 +3,6 @@ import React from 'react';
 
 import { RouteProps } from 'react-router-dom';
 
-
-// export const Task = React.lazy(() => import(/* webpackChunkName: "Task" */ "@page/Home/Task/index"))
-
 export const User = React.lazy(() => import(/* webpackChunkName: "User" */ "@page/Home/User/index"))
 
 export const Info = React.lazy(() => import(/* webpackChunkName: "Info" */ "@page/Home/User/Info/index"))
@@ -31,7 +28,6 @@ export interface routeType extends RouteProps {
 export const routes: routeType[] = [
     { path: "/home/chart", title: "工作台", svg: "icon-tongji", component: Chart },
     { path: "/home/Task", title: "任务", svg: "icon-renwu1", component: Task },
-
     {
         path: '/home/user',
         svg: "icon-yonghu",
@@ -42,7 +38,5 @@ export const routes: routeType[] = [
             { path: "/home/user/token", title: "Token", svg: "icon-ziyuan", component: Token },
         ]
     },
-
-
     { path: "/home/test", title: "测试", svg: "icon-ceshi", component: Test },
 ];

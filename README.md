@@ -20,7 +20,7 @@
 
 ## 前端搭建文章
 
-[webpack基建](https://www.yuque.com/u120129/dyqi27/ogcnek)
+[webpack 基建](https://www.yuque.com/u120129/dyqi27/ogcnek)
 
 ## 技术栈
 
@@ -42,27 +42,58 @@
 
 ```
 .
-├── Jenkinsfile                 // Jenkins多通道配置
+├── Jenkinsfile
+├── LICENSE
 ├── README.md
-├── config                      // webpack 配置
-│   ├── util                    // webpack打包用到工具函数
-│   ├── webpack.config.base.js  // webpack基础配置
-│   ├── webpack.config.dev.js   // dev环境
-│   ├── webpack.config.dll.js   // dll配置
-│   ├── webpack.config.pro.js   // 生产环境配置
-│   └── webpack.config.test.js  // 测试环境配置
-├── package.json                // 依赖文件
-├── postcss.config.js           // postcss 配置
+├── commitlint.config.js
+├── config
+│   ├── util
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── injectCDN.js
+│   │   └── moduleConfig.js
+│   ├── webpack.config.base.js
+│   ├── webpack.config.dev.js
+│   ├── webpack.config.dll.js
+│   ├── webpack.config.pro.js
+│   └── webpack.config.test.js
+├── package.json
+├── postcss.config.js
 ├── src
-│   ├── api                     // api统一存放
-│   ├── app.tsx                 // 主入口
-│   ├── assets                  // 静态文件
-│   ├── less                    // css文件
-│   ├── page                    // 页面
-│   ├── store                   // 状态管理
-│   ├── types                   // TypeScript 定义
-│   └── util                    // 页面工具函数
-└── tsconfig.json
+│   ├── api
+│   │   ├── auth.ts
+│   │   ├── char.ts
+│   │   ├── index.ts
+│   │   ├── task.ts
+│   │   ├── test.ts
+│   │   └── user.ts
+│   ├── app.less
+│   ├── app.tsx
+│   ├── assets
+│   │   └── img
+│   ├── helper.less
+│   ├── init.less
+│   ├── page
+│   │   ├── BaseLayout
+│   │   ├── Component
+│   │   ├── ErrorBoundary
+│   │   ├── Home
+│   │   ├── Login
+│   │   ├── NotFound
+│   │   └── Registered
+│   ├── store
+│   │   ├── index.tsx
+│   │   ├── task
+│   │   └── user
+│   ├── types
+│   │   └── image.d.ts
+│   └── util
+│       └── index.tsx
+├── tsconfig.json
+├── types
+│   └── typings.d.ts
+└── yarn.lock
+
 ```
 
 ## 功能
@@ -88,4 +119,3 @@
 
 - [x] 更改用户头像与密码
 - [x] 添加 Token 功能
-
