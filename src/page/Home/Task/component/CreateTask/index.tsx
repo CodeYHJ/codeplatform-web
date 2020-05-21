@@ -21,6 +21,7 @@ const CreateTask: React.SFC<CreateTaskProps> = (props) => {
     }
     const handleVisibleChange = (e: any) => {
         setVisible(e)
+        setValue('')
     }
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target

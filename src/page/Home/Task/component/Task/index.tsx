@@ -54,7 +54,7 @@ const Task: React.SFC<TaskProps> = (props) => {
             confirmLoading={confirmLoading}
             onCancel={handleCancel}
         >
-            <DatePicker renderExtraFooter={() => 'extra footer'} />
+            <DatePicker />
         </Modal>
     )
 
