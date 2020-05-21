@@ -72,7 +72,7 @@ const proConfig: webpack.Configuration = {
 
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require("../../dll/antd.manifest.json"),
+      manifest: require(pathFn('./dll/antd.mainfest.json')),
     }),
   ],
   optimization: {
