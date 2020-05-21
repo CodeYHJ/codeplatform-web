@@ -32,10 +32,10 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
         setRemark(remark)
         setChecked(complete === 1 ? true : false)
         const priorityList = [priority]
-        priorityList.includes(0)&&setTipLine(styles.tipLine_general)
-        priorityList.includes(1)&&setTipLine(styles.tipLine_ordinary)
-        priorityList.includes(2)&&setTipLine(styles.tipLine_ordinary)
-        priorityList.includes(3)&&setTipLine(styles.tipLine_warn)
+        priorityList.includes(0) && setTipLine(styles.tipLine_general)
+        priorityList.includes(1) && setTipLine(styles.tipLine_ordinary)
+        priorityList.includes(2) && setTipLine(styles.tipLine_warn)
+        priorityList.includes(3) && setTipLine(styles.tipLine_danger)
     }, [props.data])
     const openModel = () => {
         setVisible(true)
@@ -141,7 +141,7 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
         }
     }
     const DropdownButtonMenu = (
-        <Menu style={{textAlign:'center'}} onClick={handleButtonMenuClick} >
+        <Menu style={{ textAlign: 'center' }} onClick={handleButtonMenuClick} >
             <Menu.Item key="0">
                 <Button className={styles.button_general}>较低</Button>
             </Menu.Item>

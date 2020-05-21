@@ -3,7 +3,7 @@ import { Statistic, Row, Col, Card } from 'antd';
 import { MyIcon } from '@component/MyIcon';
 import { HistogramChart } from './component/HistogramChart';
 import { LineChart } from './component/LineChart';
-import { getTasksToday, getTasksInWeek } from '@api/char';
+import { getTasksToday, getTasksInWeek, getTasksNum } from '@api/char';
 import styles from './index.less'
 const Chart: React.SFC = () => {
     const initNum = {
@@ -15,6 +15,9 @@ const Chart: React.SFC = () => {
     const [week, setWeek] = useState(initNum)
 
     useEffect(() => {
+        getTasksNum().then(res => {
+            console.log(res, '22222')
+        })
         const dayData = () => {
             getTasksToday().then(res => {
                 if (res.tasksNum) {
@@ -29,38 +32,38 @@ const Chart: React.SFC = () => {
                 }
             })
         }
-        dayData()
-        weekData()
+        // dayData()
+        // weekData()
     }, [])
     return (
         <div className={styles.chartPage}>
             <Row gutter={[24, 24]} >
                 <Col md={12} lg={6}>
                     <Card className={styles.cardStyle}>
-                        <MyIcon className={styles.iconStyle} style={{ fontSize: "50px", float: 'left' }} type="icon-milestone-today" />
-                        <Statistic className={styles.statisStyle} title="Pedding" value={day.completedNum} suffix={`/ ${day.totalNum}`} />
+                        <MyIcon className={`${styles.iconStyle} ${styles.general}`} style={{ fontSize: "50px", float: 'left' }} type="icon-priority" />
+                        <Statistic className={styles.statisStyle} title="较低" value={day.completedNum} suffix={`/ ${day.totalNum}`} />
                     </Card>
                 </Col>
                 <Col md={12} lg={6}>
                     <Card className={styles.cardStyle}>
-                        <MyIcon className={styles.iconStyle} style={{ fontSize: "50px", float: 'left' }} type="icon-songxiyiwancheng-bian" />
-                        <Statistic className={styles.statisStyle} title="Completed In Week" value={week.completedNum} />
+                        <MyIcon className={`${styles.iconStyle} ${styles.ordinary}`} style={{ fontSize: "50px", float: 'left' }} type="icon-priority" />
+                        <Statistic className={styles.statisStyle} title="普通" value={week.completedNum} suffix={`/ ${day.totalNum}`} />
                     </Card>
                 </Col>
                 <Col md={12} lg={6}>
                     <Card className={styles.cardStyle}>
-                        <MyIcon className={styles.iconStyle} style={{ fontSize: "50px", float: 'left' }} type="icon-yanzhonggaojing" />
-                        <Statistic className={styles.statisStyle} title="UnComplete In Week" value={week.failNum} />
+                        <MyIcon className={`${styles.iconStyle} ${styles.warn}`} style={{ fontSize: "50px", float: 'left' }} type="icon-priority" />
+                        <Statistic className={styles.statisStyle} title="紧急" value={week.failNum} suffix={`/ ${day.totalNum}`} />
                     </Card>
                 </Col>
                 <Col md={12} lg={6}>
                     <Card className={styles.cardStyle}>
-                        <MyIcon className={styles.iconStyle} style={{ fontSize: "50px", float: 'left' }} type="icon-tongji1" />
-                        <Statistic className={styles.statisStyle} title="Total In Week" value={week.totalNum} />
+                        <MyIcon className={`${styles.iconStyle} ${styles.danger}`} style={{ fontSize: "50px", float: 'left' }} type="icon-priority" />
+                        <Statistic className={styles.statisStyle} title="非常紧急" value={week.totalNum} suffix={`/ ${day.totalNum}`} />
                     </Card>
                 </Col>
-                <HistogramChart />
-                {/* <LineChart /> */}
+                {/* <HistogramChart /> */}
+                <LineChart />
             </Row>
 
         </div>

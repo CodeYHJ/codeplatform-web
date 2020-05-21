@@ -25,3 +25,22 @@ export const getTasksInWeek: PromiseAxios<unknown, TaskWeekResponse> = () => {
 export const getTaskInMonth: PromiseAxios<unknown, TaskMonthResponse> = () => {
   return request.get("/chart/tasksmonth");
 };
+
+/**
+ *
+ *
+ */
+interface GetTasksNumResult {
+  total: number;
+  complete: number;
+}
+interface GetTasksNumResultList {
+  general: GetTasksNumResult;
+  ordinary: GetTasksNumResult;
+  warn: GetTasksNumResult;
+  danger: GetTasksNumResult;
+}
+
+export const getTasksNum: PromiseAxios<unknown, GetTasksNumResultList> = () => {
+  return request.get("/chart/getNum");
+};

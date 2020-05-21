@@ -1,7 +1,7 @@
 import React from 'react';
-import {  Chart, Axis, Geom, Tooltip } from 'bizcharts'
+import { Chart, Axis, Geom, Tooltip } from 'bizcharts'
 import { Col } from 'antd';
-import styles from './less.css'
+import styles from './index.less'
 
 export interface LineChartProps {
 
@@ -56,10 +56,9 @@ export const LineChart: React.SFC<LineChartProps> = () => {
         }
     };
     return (
-        <Col md={24} lg={12}>
-
+        <Col md={24} lg={24}>
             <div className={styles.lineChart}>
-                <h3 className={styles.title}>每周文章生产情况</h3>
+                <h3 className={styles.title}>任务完成图</h3>
                 <Chart height={400} data={data} scale={cols} forceFit>
                     <Axis name="year" />
                     <Axis name="value" />
