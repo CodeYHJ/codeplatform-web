@@ -5,9 +5,9 @@ import { message } from "antd";
 let baseURL = "";
 
 if (process.env.DEPLOY === "pro") {
-  baseURL = "https://api.codeyhj.cn";
+  baseURL = "https://api.codeyhj.top";
 } else if (process.env.DEPLOY === "pre") {
-  baseURL = "https://apipretest.codeyhj.cn";
+  baseURL = "https://apipretest.codeyhj.top";
 } else {
   baseURL = "/api";
 }
