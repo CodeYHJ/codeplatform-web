@@ -13,8 +13,6 @@ export const Chart = React.lazy(() => import(/* webpackChunkName: "Chart" */ "@p
 
 export const Task = React.lazy(() => import(/* webpackChunkName: "NewTask" */ "@page/Home/Task/index"))
 
-export const Test = React.lazy(() => import(/* webpackChunkName: "Test" */ "@page/Home/Test/index"))
-
 
 export interface routeType extends RouteProps {
     title: string,
@@ -38,5 +36,4 @@ export const routes: routeType[] = [
             { path: "/home/user/token", title: "Token", svg: "icon-ziyuan", component: Token },
         ]
     },
-    { path: "/home/test", title: "测试", svg: "icon-ceshi", component: Test },
 ];
