@@ -77,7 +77,7 @@ const Task: React.SFC<TaskProps> = (props) => {
                     <div className={styles.titleText} >
                         {taskData.name}
                     </div>
-                    <TaskOption taskid={taskData.id} upDateFn={() => { setUpDate(!upDate) }} upDateAllFn={props.upDateAllFn} />
+                    <TaskOption taskid={taskData.id} hasMicro={taskData.microtasks.length ? true : false} upDateFn={() => { setUpDate(!upDate) }} upDateAllFn={props.upDateAllFn} />
                 </div>
                 <div className={styles.taskList}>
                     {TaskBody()}

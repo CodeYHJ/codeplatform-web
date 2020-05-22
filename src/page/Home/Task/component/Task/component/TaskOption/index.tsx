@@ -10,7 +10,8 @@ import EllipsisOutlined from "@ant-design/icons/lib/icons/EllipsisOutlined"
 export interface TaskOptionsProps {
     taskid: number,
     upDateFn: () => void,
-    upDateAllFn: () => void
+    upDateAllFn: () => void,
+    hasMicro: boolean
 
 }
 
@@ -24,10 +25,10 @@ const TaskOptions: React.SFC<TaskOptionsProps> = (props) => {
     const closeSub = () => {
         setSub(false)
     }
-    const handleVisibleChange = (visible:boolean ) => {
+    const handleVisibleChange = (visible: boolean) => {
         setVisible(visible)
     }
-    const closePopover= ()=>{
+    const closePopover = () => {
         setVisible(false)
     }
     return (
@@ -40,6 +41,7 @@ const TaskOptions: React.SFC<TaskOptionsProps> = (props) => {
                 upDateAllFn={props.upDateAllFn}
                 closePopover={closePopover}
                 closeSub={closeSub}
+                hasMicro={props.hasMicro}
             />}
             placement="bottom"
             visible={visible}

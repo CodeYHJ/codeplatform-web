@@ -13,7 +13,8 @@ export interface TaskOptionProps {
     upDateFn: () => void,
     upDateAllFn: () => void,
     closePopover: () => void,
-    closeSub: () => void
+    closeSub: () => void,
+    hasMicro: boolean
 }
 
 
@@ -75,11 +76,11 @@ const TaskOption: React.SFC<TaskOptionProps> = (props) => {
         <Menu className={styles.cancleBoder} onClick={handleClick}>
             <Menu.Item key="0">
                 编辑任务名字
-        </Menu.Item>
-            <Menu.Item key="1" >
+        </Menu.Item >
+            <Menu.Item key="1" disabled={!props.hasMicro}>
                 设置当前列表所有任务截至时间
         </Menu.Item>
-            <Menu.Item key="2">
+            <Menu.Item key="2" disabled={!props.hasMicro}>
                 清空当前列表所有任务
         </Menu.Item>
             <Menu.Divider />
