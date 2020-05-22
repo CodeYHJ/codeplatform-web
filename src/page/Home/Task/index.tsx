@@ -21,7 +21,7 @@ const NewTask: React.SFC<NewTaskProps> = () => {
                 const { taskList } = res
                 const list = taskList.map(el => {
                     const data = { ...el }
-                    return <Task key={el.id} data={data} updateAllFn={handleRender} />
+                    return <Task key={el.id} data={data} upDateAllFn={handleRender} />
                 })
                 setTaskList(list)
 

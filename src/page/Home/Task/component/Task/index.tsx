@@ -9,7 +9,7 @@ import { BaseTask, getTaskByTaskId } from '@api/task';
 import MicroTask from './component/MicroTask';
 export interface TaskProps {
     data: BaseTask,
-    updateAllFn: () => void
+    upDateAllFn: () => void
 }
 
 
@@ -77,7 +77,7 @@ const Task: React.SFC<TaskProps> = (props) => {
                     <div className={styles.titleText} >
                         {taskData.name}
                     </div>
-                    <TaskOption taskid={taskData.id} upDateFn={() => { setUpDate(!upDate) }} updateAllFn={props.updateAllFn} />
+                    <TaskOption taskid={taskData.id} upDateFn={() => { setUpDate(!upDate) }} upDateAllFn={props.upDateAllFn} />
                 </div>
                 <div className={styles.taskList}>
                     {TaskBody()}

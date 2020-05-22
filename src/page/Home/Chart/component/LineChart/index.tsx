@@ -4,7 +4,6 @@ import { Col } from 'antd';
 import styles from './index.less'
 import { GetTasksNumMicro, getTrend } from '@api/char';
 import { getDaysOfMonth } from '@util/';
-import Test from '@page/Home/Test';
 
 export interface LineChartProps {
 }
@@ -79,7 +78,7 @@ export const LineChart: React.SFC<LineChartProps> = () => {
         <Col md={24} xs={12}>
             <div className={styles.lineChart}>
                 <h3 className={styles.title}>当月任务类型趋势图</h3>
-                <Chart  height={400} data={data} scale={scale} forceFit>
+                <Chart height={400} data={data} scale={scale} forceFit>
                     <Axis name="day" />
                     <Axis name="total" />
                     <Tooltip
