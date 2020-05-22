@@ -42,7 +42,7 @@ const proConfig: webpack.Configuration = {
         js: [
           "https://cdn.bootcss.com/react/16.13.1/umd/react.production.min.js",
           "https://cdn.bootcss.com/react-dom/16.13.1/umd/react-dom.production.min.js",
-          "https://gw.alipayobjects.com/os/lib/bizcharts/3.5.8/umd/BizCharts.js",
+          "https://gw.alipayobjects.com/os/lib/bizcharts/4.0.3/umd/BizCharts.js",
         ],
       },
     }),

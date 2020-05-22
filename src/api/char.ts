@@ -8,7 +8,7 @@ interface TaskTodayResponse {
     failNum: number;
   };
 }
-interface TaskWeekResponse extends TaskTodayResponse {}
+interface TaskWeekResponse extends TaskTodayResponse { }
 interface TaskMonthResponse {
   tasksList: { name: string; day: string; num: number }[];
 }
@@ -31,25 +31,21 @@ export const getTaskInMonth: PromiseAxios<unknown, TaskMonthResponse> = () => {
  *
  *
  */
-interface PriorityNum {
-  total: number;
-  complete: number;
-}
-interface PriorityNums {
-  general: PriorityNum;
-  ordinary: PriorityNum;
-  warn: PriorityNum;
-  danger: PriorityNum;
-}
+
 export interface GetTasksNumMicro {
-  complete: number;
+  complete: string;
   priority: number;
-  create_at: Date;
+  total: number;
+  day: number;
 }
 interface GetTasksNumResult {
-  priorityNums: PriorityNums;
-  microList: GetTasksNumMicro[];
+  result: GetTasksNumMicro[];
 }
 export const getTasksNum: PromiseAxios<unknown, GetTasksNumResult> = () => {
   return request.get("/chart/getNum");
+};
+
+
+export const getTrend: PromiseAxios<unknown, GetTasksNumResult> = () => {
+  return request.get("/chart/getTrend");
 };

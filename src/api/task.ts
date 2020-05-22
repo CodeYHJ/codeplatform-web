@@ -97,7 +97,8 @@ export interface BaseMicrotask {
   dsc: string;
   complete: number;
   remark: null | string;
-  priority: number
+  priority: number,
+  endtime:string,
 }
 interface CreateTaskRequest extends BaseRequest { }
 
@@ -198,4 +199,28 @@ export const upDateMicroTaskRemark: PromiseAxios<
   UpDateMicroTaskRemarkResponse
 > = (data) => {
   return request.post("/task/upMmark", data);
+};
+
+interface UpDateDeadTimeRequest {
+  id: number;
+  endtime?: string;
+}
+interface UpDateDeadTimeResponse extends UpdateTaskResponse { }
+export const upDateDeadTime: PromiseAxios<
+  UpDateDeadTimeRequest,
+  UpDateDeadTimeResponse
+> = (data) => {
+  return request.post("/task/upMtime", data);
+};
+
+
+interface DeleteAllMicroTaskRequest {
+  taskid: number;
+}
+interface DeleteAllMicroTaskResponse extends UpdateTaskResponse { }
+export const deleteAllMicroTask: PromiseAxios<
+DeleteAllMicroTaskRequest,
+DeleteAllMicroTaskResponse
+> = (data) => {
+  return request.post("/task/deleteMall", data);
 };

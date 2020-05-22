@@ -37,19 +37,19 @@ const devConfig: webpack.Configuration = {
   plugins: [
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require(pathFn("./dll/react.manifest.json")),
+      manifest: require(pathFn("./dll/react.mainfest.json")),
     }),
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require(pathFn("./dll/antd.manifest.json")),
+      manifest: require(pathFn("./dll/antd.mainfest.json")),
     }),
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require(pathFn("./dll/bizcharts.manifest.json")),
+      manifest: require(pathFn("./dll/bizcharts.mainfest.json")),
     }),
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require(pathFn("./dll/axios.manifest.json")),
+      manifest: require(pathFn("./dll/axios.mainfest.json")),
     }),
   ],
   devtool: "inline-source-map",

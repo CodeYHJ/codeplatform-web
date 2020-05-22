@@ -16,8 +16,6 @@ const CreateTask: React.SFC<CreateTaskProps> = (props) => {
 
     const onClick = () => {
         setVisible(false)
-
-
     }
     const handleVisibleChange = (e: any) => {
         setVisible(e)

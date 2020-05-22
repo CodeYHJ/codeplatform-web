@@ -6,6 +6,10 @@ import CheckSquareOutlined from "@ant-design/icons/lib/icons/CheckSquareOutlined
 import BorderOutlined from "@ant-design/icons/lib/icons/BorderOutlined"
 import styles from './index.less'
 import { ClickParam } from 'antd/lib/menu';
+import { isInWeek } from '@util/';
+import { isTomorrow } from '@util/';
+import moment from 'moment';
+
 const { TextArea } = Input
 export interface MicroTaskProps {
     data: BaseMicrotask,
@@ -140,6 +144,26 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
             )
         }
     }
+    const RenderEndTime = () => {
+        if (microTask && microTask.endtime) {
+            const date = moment(microTask.endtime)
+            if (isTomorrow(microTask.endTime)) {
+                return (
+                    <div className={styles.rang_tomorrow}>明天 截止</div>
+                )
+            }
+            else if (isInWeek(microTask.endtime)) {
+                return (
+                    <div className={styles.rang_week}>{date.format('dddd')} 截止</div>
+                )
+            } else {
+                return (
+                    <div className={styles.rang_far}>{date.format("MMM Do")} 截止</div>
+                )
+            }
+
+        }
+    }
     const DropdownButtonMenu = (
         <Menu style={{ textAlign: 'center' }} onClick={handleButtonMenuClick} >
             <Menu.Item key="0">
@@ -174,7 +198,12 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
     return (
         <div className={styles.microTask} >
             <Checkbox className={styles.checkBox} checked={checked} onChange={onChange} />
-            <div className={styles.name} onClick={openModel}>{name}</div>
+            <div className={styles.content} onClick={openModel}>
+                <div className={styles.name} >{name}</div>
+                <div className={styles.endTime}>
+                    {RenderEndTime()}
+                </div>
+            </div>
             <div className={tipLine + ' ' + styles.tipLine}></div>
             <Modal
                 maskClosable={false}

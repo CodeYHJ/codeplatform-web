@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef } from 'react';
 import styles from "@page/Login/index.less";
-
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 export const getPeriodOfTime = () => {
     const time = new Date()
     const hours = time.getHours()
@@ -56,3 +57,37 @@ export const daysList = (): string[] => {
     return list;
 }
 
+export const leftTimeStartInWeek = (difday: number) => {
+    const difTime = difday * 24 * 60 * 60 * 1000;
+    const targetTime =
+        new Date(new Date().setHours(0, 0, 0, 0)).getTime() - difTime;
+    const dayTime = new Date(
+        new Date(targetTime).setHours(0, 0, 0, 0)
+    ).getTime();
+    return dayTime;
+}
+export const rightTimeEndInWeek = (difday: number) => {
+    const difTime = difday * 24 * 60 * 60 * 1000;
+    const targetTime = new Date().getTime() + difTime;
+    const dayTime = new Date(
+        new Date(targetTime).setHours(23, 59, 59, 999)
+    ).getTime();
+    return dayTime;
+}
+export const isInWeek = (time: string) => {
+    const transformTime = new Date(time).getTime()
+    const nowDate = new Date()
+    const day = nowDate.getDay()
+    const weekEndTime = rightTimeEndInWeek(7 - day)
+    if (transformTime < weekEndTime) return true
+    return false
+}
+
+export const isTomorrow = (time: string) => {
+    const transformTime = new Date(time).getTime()
+    const nowDate = new Date()
+    const startTimeOnDay = new Date(nowDate.setHours(23, 59, 59, 999)).getTime()
+    const oneDayTime = 24 * 60 * 60 * 1000;
+    if (transformTime < startTimeOnDay + oneDayTime) return true
+    return false
+}
