@@ -1,52 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Chart, Axis, Geom, Tooltip } from 'bizcharts'
 import { Col } from 'antd';
 import styles from './index.less'
+import { GetTasksNumMicro } from '@api/char';
 
 export interface LineChartProps {
-
+    data: GetTasksNumMicro | []
 }
 
-export const LineChart: React.SFC<LineChartProps> = () => {
-
-    const data = [
-        {
-            year: "1991",
-            value: 3
-        },
-        {
-            year: "1992",
-            value: 4
-        },
-        {
-            year: "1993",
-            value: 3.5
-        },
-        {
-            year: "1994",
-            value: 5
-        },
-        {
-            year: "1995",
-            value: 4.9
-        },
-        {
-            year: "1996",
-            value: 6
-        },
-        {
-            year: "1997",
-            value: 7
-        },
-        {
-            year: "1998",
-            value: 9
-        },
-        {
-            year: "1999",
-            value: 13
-        }
-    ];
+export const LineChart: React.SFC<LineChartProps> = (props) => {
+    const [data, setDate] = useState(props.data)
+    // const data = [
+    //     {
+    //         year: "1991",
+    //         value: 3
+    //     },
+    //     {
+    //         year: "1992",
+    //         value: 4
+    //     },
+    //     {
+    //         year: "1993",
+    //         value: 3.5
+    //     },
+    //     {
+    //         year: "1994",
+    //         value: 5
+    //     },
+    //     {
+    //         year: "1995",
+    //         value: 4.9
+    //     },
+    //     {
+    //         year: "1996",
+    //         value: 6
+    //     },
+    //     {
+    //         year: "1997",
+    //         value: 7
+    //     },
+    //     {
+    //         year: "1998",
+    //         value: 9
+    //     },
+    //     {
+    //         year: "1999",
+    //         value: 13
+    //     }
+    // ];
     const cols = {
         value: {
             min: 0
@@ -55,6 +56,9 @@ export const LineChart: React.SFC<LineChartProps> = () => {
             range: [0, 1]
         }
     };
+    useEffect(() => {
+        setDate(props.data)
+    }, [props.data])
     return (
         <Col md={24} lg={24}>
             <div className={styles.lineChart}>

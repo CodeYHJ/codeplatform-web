@@ -1,4 +1,5 @@
 import request from "./index";
+import { BaseMicrotask } from "./task";
 
 interface TaskTodayResponse {
   tasksNum: {
@@ -30,17 +31,25 @@ export const getTaskInMonth: PromiseAxios<unknown, TaskMonthResponse> = () => {
  *
  *
  */
-interface GetTasksNumResult {
+interface PriorityNum {
   total: number;
   complete: number;
 }
-interface GetTasksNumResultList {
-  general: GetTasksNumResult;
-  ordinary: GetTasksNumResult;
-  warn: GetTasksNumResult;
-  danger: GetTasksNumResult;
+interface PriorityNums {
+  general: PriorityNum;
+  ordinary: PriorityNum;
+  warn: PriorityNum;
+  danger: PriorityNum;
 }
-
-export const getTasksNum: PromiseAxios<unknown, GetTasksNumResultList> = () => {
+export interface GetTasksNumMicro {
+  complete: number;
+  priority: number;
+  create_at: Date;
+}
+interface GetTasksNumResult {
+  priorityNums: PriorityNums;
+  microList: GetTasksNumMicro[];
+}
+export const getTasksNum: PromiseAxios<unknown, GetTasksNumResult> = () => {
   return request.get("/chart/getNum");
 };

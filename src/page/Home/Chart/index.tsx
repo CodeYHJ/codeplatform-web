@@ -7,33 +7,30 @@ import { getTasksToday, getTasksInWeek, getTasksNum } from '@api/char';
 import styles from './index.less'
 const Chart: React.SFC = () => {
     const initNum = {
-        totalNum: 0,
-        completedNum: 0,
-        failNum: 0
+        total: 0,
+        complete: 0,
     }
-    const [day, setDay] = useState(initNum)
-    const [week, setWeek] = useState(initNum)
-
+    const [generalNum, setGeneralNum] = useState(initNum)
+    const [ordinaryNum, setOrdinaryNum] = useState(initNum)
+    const [warnNum, setWarnNum] = useState(initNum)
+    const [dangerNum, setDangerNum] = useState(initNum)
+    const [micros, setMicros] = useState([])
     useEffect(() => {
-        getTasksNum().then(res => {
-            console.log(res, '22222')
-        })
-        const dayData = () => {
-            getTasksToday().then(res => {
-                if (res.tasksNum) {
-                    setDay(res.tasksNum)
-                }
+        const tasksNum = async () => {
+            getTasksNum().then(res => {
+                const { priorityNums, microList } = res
+                const { general,
+                    ordinary,
+                    warn,
+                    danger } = priorityNums
+                setGeneralNum(general)
+                setOrdinaryNum(ordinary)
+                setWarnNum(warn)
+                setDangerNum(danger)
+                setMicros(microList)
             })
         }
-        const weekData = () => {
-            getTasksInWeek().then((res) => {
-                if (res.tasksNum) {
-                    setWeek(res.tasksNum)
-                }
-            })
-        }
-        // dayData()
-        // weekData()
+        tasksNum()
     }, [])
     return (
         <div className={styles.chartPage}>
@@ -41,29 +38,29 @@ const Chart: React.SFC = () => {
                 <Col md={12} lg={6}>
                     <Card className={styles.cardStyle}>
                         <MyIcon className={`${styles.iconStyle} ${styles.general}`} style={{ fontSize: "50px", float: 'left' }} type="icon-priority" />
-                        <Statistic className={styles.statisStyle} title="较低" value={day.completedNum} suffix={`/ ${day.totalNum}`} />
+                        <Statistic className={styles.statisStyle} title="较低" value={generalNum.complete} suffix={`/ ${generalNum.total}`} />
                     </Card>
                 </Col>
                 <Col md={12} lg={6}>
                     <Card className={styles.cardStyle}>
                         <MyIcon className={`${styles.iconStyle} ${styles.ordinary}`} style={{ fontSize: "50px", float: 'left' }} type="icon-priority" />
-                        <Statistic className={styles.statisStyle} title="普通" value={week.completedNum} suffix={`/ ${day.totalNum}`} />
+                        <Statistic className={styles.statisStyle} title="普通" value={ordinaryNum.complete} suffix={`/ ${ordinaryNum.total}`} />
                     </Card>
                 </Col>
                 <Col md={12} lg={6}>
                     <Card className={styles.cardStyle}>
                         <MyIcon className={`${styles.iconStyle} ${styles.warn}`} style={{ fontSize: "50px", float: 'left' }} type="icon-priority" />
-                        <Statistic className={styles.statisStyle} title="紧急" value={week.failNum} suffix={`/ ${day.totalNum}`} />
+                        <Statistic className={styles.statisStyle} title="紧急" value={warnNum.complete} suffix={`/ ${warnNum.total}`} />
                     </Card>
                 </Col>
                 <Col md={12} lg={6}>
                     <Card className={styles.cardStyle}>
                         <MyIcon className={`${styles.iconStyle} ${styles.danger}`} style={{ fontSize: "50px", float: 'left' }} type="icon-priority" />
-                        <Statistic className={styles.statisStyle} title="非常紧急" value={week.totalNum} suffix={`/ ${day.totalNum}`} />
+                        <Statistic className={styles.statisStyle} title="非常紧急" value={dangerNum.complete} suffix={`/ ${dangerNum.total}`} />
                     </Card>
                 </Col>
                 {/* <HistogramChart /> */}
-                <LineChart />
+                <LineChart data={micros} />
             </Row>
 
         </div>
