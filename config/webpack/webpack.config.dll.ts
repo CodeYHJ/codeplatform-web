@@ -18,6 +18,7 @@ const dllConfig = {
     new webpack.DllPlugin({
       name: "[name]_dll_[hash]",
       path: pathFn("./dll/[name].mainfest.json"),
+      context: pathFn("./"),
     }),
   ],
 };

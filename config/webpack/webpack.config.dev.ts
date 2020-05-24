@@ -36,19 +36,19 @@ const devConfig: webpack.Configuration = {
   },
   plugins: [
     new webpack.DllReferencePlugin({
-      context: __dirname,
+      context: pathFn("./"),
       manifest: require(pathFn("./dll/react.mainfest.json")),
     }),
     new webpack.DllReferencePlugin({
-      context: __dirname,
+      context: pathFn("./"),
       manifest: require(pathFn("./dll/antd.mainfest.json")),
     }),
     new webpack.DllReferencePlugin({
-      context: __dirname,
+      context: pathFn("./"),
       manifest: require(pathFn("./dll/bizcharts.mainfest.json")),
     }),
     new webpack.DllReferencePlugin({
-      context: __dirname,
+      context: pathFn("./"),
       manifest: require(pathFn("./dll/axios.mainfest.json")),
     }),
   ],

@@ -73,8 +73,12 @@ const proConfig: webpack.Configuration = {
     }),
 
     new webpack.DllReferencePlugin({
-      context: __dirname,
+      context: pathFn("./"),
       manifest: require(pathFn("./dll/antd.mainfest.json")),
+    }),
+    new webpack.DllReferencePlugin({
+      context: pathFn("./"),
+      manifest: require(pathFn("./dll/axios.mainfest.json")),
     }),
   ],
   optimization: {
