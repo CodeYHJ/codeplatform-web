@@ -6,6 +6,8 @@ import webpack from "webpack";
 
 import { pathFn } from "./utils";
 
+import HappyPack from "happypack";
+
 const config: webpack.Configuration = {
   entry: pathFn("./src/app.tsx"),
   output: {
@@ -38,6 +40,35 @@ const config: webpack.Configuration = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         DEPLOY: JSON.stringify(process.env.DEPLOY),
       },
+    }),
+    new HappyPack({
+      id: "styles",
+      threads: 2,
+      loaders: [
+        {
+          loader: "css-loader",
+          options: {
+            importLoaders: 2,
+            modules: true,
+          },
+        },
+        "postcss-loader",
+        "less-loader",
+      ],
+    }),
+    new HappyPack({
+      id: "antd",
+      threads: 2,
+      loaders: [
+        "css-loader",
+        "postcss-loader",
+        {
+          loader: "less-loader",
+          options: {
+            javascriptEnabled: true,
+          },
+        },
+      ],
     }),
   ],
   module: moduleConfig,

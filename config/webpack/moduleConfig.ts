@@ -1,4 +1,5 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { pathFn } from "./utils";
 export default {
   rules: [
     {
@@ -23,38 +24,26 @@ export default {
     // antd样式文件
     {
       test: /\.less$/,
-      include: [/node_modules/],
+      include: /[\\/]node_modules[\\/](antd)[\\/]/,
+      exclude: pathFn("/src"),
       use: [
+        "cache-loader",
         process.env.NODE_ENV === "development"
           ? "style-loader"
           : MiniCssExtractPlugin.loader,
-        "css-loader",
-        "postcss-loader",
-        {
-          loader: "less-loader",
-          options: {
-            javascriptEnabled: true,
-          },
-        },
+        "happypack/loader?id=antd",
       ],
     },
     // 项目样式
     {
       test: /\.less$/,
-      exclude: [/node_modules/],
+      include: pathFn("./src"),
       use: [
+        "cache-loader",
         process.env.NODE_ENV === "development"
           ? "style-loader"
           : MiniCssExtractPlugin.loader,
-        {
-          loader: "css-loader",
-          options: {
-            importLoaders: 1,
-            modules: true,
-          },
-        },
-        "postcss-loader",
-        "less-loader",
+        "happypack/loader?id=styles",
       ],
     },
     // img优化

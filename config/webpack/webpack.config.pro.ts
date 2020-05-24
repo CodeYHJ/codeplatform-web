@@ -25,6 +25,7 @@ import { pathFn } from "./utils";
 const smp = new SpeedMeasurePlugin();
 
 const proConfig: webpack.Configuration = {
+  mode: "production",
   output: {
     path: pathFn("./admin"),
     filename: `js/[name].[chunkhash].js`,
@@ -34,6 +35,7 @@ const proConfig: webpack.Configuration = {
   plugins: [
     //清除上一次打包
     new CleanWebpackPlugin(),
+
     new HtmlwebpackPlugin({
       title: "admin",
       template: pathFn("./config/HTML/index.html"),
@@ -52,7 +54,7 @@ const proConfig: webpack.Configuration = {
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash].css",
       chunkFilename: "css/[name].[contenthash].css",
-      ignoreOrder: false, // Enable to remove warnings about conflicting order
+      ignoreOrder: true, // Enable to remove warnings about conflicting order
     }),
     // opt css
     new optimizeCssPlugin({
@@ -72,7 +74,7 @@ const proConfig: webpack.Configuration = {
 
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require(pathFn('./dll/antd.mainfest.json')),
+      manifest: require(pathFn("./dll/antd.mainfest.json")),
     }),
   ],
   optimization: {

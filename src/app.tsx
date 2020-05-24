@@ -13,7 +13,7 @@ import Loading from "@component/Loading"
 import { NotFound } from '@page/NotFound';
 
 import styles from './app.less'
-import "./init.less";
+// import "./init.less";
 
 export interface AppProps {
 
