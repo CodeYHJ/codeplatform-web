@@ -8,8 +8,14 @@ import webpack from "webpack";
 
 import { pathFn } from "./utils";
 
-import AutoDllPlugin from "autodll-webpack-plugin";
+import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
 
+import HtmlwebpackPlugin from "html-webpack-plugin";
+
+import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+
+
+const smp = new SpeedMeasurePlugin();
 
 const devConfig: webpack.Configuration = {
   mode: "development",
@@ -38,20 +44,39 @@ const devConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new AutoDllPlugin({
-      inject: true, // will inject the DLL bundles to index.html
-      filename: '[name].dll.js',
-      entry: {
-        react: ["react", "react-dom", "react-router-dom"],
-        antd: ["antd"],
-        bizcharts: ["bizcharts"],
-        axios: ["axios"],
-      }
-    })
+    new HtmlwebpackPlugin({
+      inject: true,
+      title: "admin",
+      template: pathFn("./config/HTML/index.html"),
+      favicon: pathFn("./config/HTML/favicon.ico"),
+      dll: [
+        '/dll/antd.dll.js',
+        '/dll/react.dll.js',
+        '/dll/bizcharts.dll.js',
+        '/dll/axios.dll.js',
+      ]
+    }),
+    new webpack.DllReferencePlugin({
+      context: pathFn("./admin/dll"),
+      manifest: require(pathFn("./admin/dll/antd.mainfest.json")),
+    }),
+    new webpack.DllReferencePlugin({
+      context: pathFn("./admin/dll"),
+      manifest: require(pathFn("./admin/dll/axios.mainfest.json")),
+    }),
+    new webpack.DllReferencePlugin({
+      context: pathFn("./admin/dll"),
+      manifest: require(pathFn("./admin/dll/bizcharts.mainfest.json")),
+    }),
+    new webpack.DllReferencePlugin({
+      context: pathFn("./admin/dll"),
+      manifest: require(pathFn("./admin/dll/react.mainfest.json")),
+    }),
+    new HardSourceWebpackPlugin()
   ],
   devtool: "inline-source-map",
-};
 
-const mergeConfig = merge(baseConfig, devConfig);
+};
+const mergeConfig = smp.wrap(merge(baseConfig, devConfig));
 
 export default mergeConfig;

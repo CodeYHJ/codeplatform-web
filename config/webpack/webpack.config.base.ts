@@ -1,15 +1,11 @@
 import moduleConfig from "./moduleConfig";
 
-import HtmlwebpackPlugin from "html-webpack-plugin";
 
 import webpack from "webpack";
 
 import { pathFn } from "./utils";
 
 import HappyPack from "happypack";
-
-
-
 
 const config: webpack.Configuration = {
   entry: pathFn("./src/app.tsx"),
@@ -33,11 +29,7 @@ const config: webpack.Configuration = {
     },
   },
   plugins: [
-    new HtmlwebpackPlugin({
-      title: "admin",
-      template: pathFn("./config/HTML/index.html"),
-      favicon: pathFn("./config/HTML/favicon.ico"),
-    }),
+
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),

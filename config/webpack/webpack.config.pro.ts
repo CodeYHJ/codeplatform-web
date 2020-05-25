@@ -2,7 +2,6 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer";
 
-import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
 
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
@@ -22,10 +21,8 @@ import webpack from "webpack";
 
 import { pathFn } from "./utils";
 
-import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
 
-const smp = new SpeedMeasurePlugin();
 
 const proConfig: webpack.Configuration = {
   mode: "production",
@@ -74,24 +71,6 @@ const proConfig: webpack.Configuration = {
       threshold: 10240, //只处理比这个值大的资源。按字节计算
       minRatio: 0.8, //只有压缩率比这个值小的资源才会被处理
     }),
-    // new webpack.DllReferencePlugin({
-    //   context: pathFn("./admin/dll"),
-    //   manifest: require(pathFn("./admin/dll/antd.mainfest.json")),
-    // }),
-    // new webpack.DllReferencePlugin({
-    //   context: pathFn("./admin/dll"),
-    //   manifest: require(pathFn("./admin/dll/axios.mainfest.json")),
-
-    // }),
-    new HardSourceWebpackPlugin(),
-    new HardSourceWebpackPlugin.ExcludeModulePlugin(
-      [
-        {
-          test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
-        },
-      ]
-    ),
-
   ],
   optimization: {
     minimizer: [
@@ -122,9 +101,6 @@ const proConfig: webpack.Configuration = {
     bizcharts: "BizCharts",
   },
 };
-// const mergeConfig = smp.wrap(merge(baseConfig, proConfig));
-
-const mergeConfig = merge(baseConfig, proConfig);
-
+const mergeConfig = merge(baseConfig, proConfig)
 
 export default mergeConfig;

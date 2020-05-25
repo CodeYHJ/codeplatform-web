@@ -12,5 +12,11 @@
     htmlWebpackPlugin.options.cdn.js) { %>
     <script src="<%=js%>"></script>
     <% } %> <% } %>
+
+    <!-- import dll js -->
+    <% if(htmlWebpackPlugin.options.dll) {%> <% for(var dll of
+    htmlWebpackPlugin.options.dll) { %>
+    <script type="text/javascript" src="<%=dll%>"></script>
+    <% } %> <% } %>
   </body>
 </html>
