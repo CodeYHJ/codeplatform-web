@@ -21,7 +21,7 @@ pipeline {
                 sh 'node --version'
                 sh 'npm install -g yarn --registry=https://registry.npm.taobao.org'
                 sh 'yarn install'
-                sh 'yarn dll'
+                // sh 'yarn dll'
                 sh 'yarn build:pro'
                }
             }
@@ -53,7 +53,7 @@ pipeline {
                     sh 'node --version'
                     sh 'npm install -g yarn --registry=https://registry.npm.taobao.org'
                     sh 'yarn install'
-                    sh 'yarn dll'
+                    // sh 'yarn dll'
                     sh 'yarn build:pretest'
                }
             }
