@@ -24,8 +24,6 @@ import { pathFn } from "./utils";
 
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
-import AutoDllPlugin from "autodll-webpack-plugin";
-
 
 const smp = new SpeedMeasurePlugin();
 
@@ -93,14 +91,7 @@ const proConfig: webpack.Configuration = {
         },
       ]
     ),
-    new AutoDllPlugin({
-      inject: true, // will inject the DLL bundles to index.html
-      filename: '[name].dll.js',
-      entry: {
-        antd: ["antd"],
-        axios: ["axios"],
-      }
-    })
+
   ],
   optimization: {
     minimizer: [
