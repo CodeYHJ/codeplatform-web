@@ -8,6 +8,9 @@ import { pathFn } from "./utils";
 
 import HappyPack from "happypack";
 
+
+
+
 const config: webpack.Configuration = {
   entry: pathFn("./src/app.tsx"),
   output: {
@@ -70,6 +73,7 @@ const config: webpack.Configuration = {
         },
       ],
     }),
+
   ],
   module: moduleConfig,
 };

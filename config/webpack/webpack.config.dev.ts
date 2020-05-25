@@ -8,6 +8,9 @@ import webpack from "webpack";
 
 import { pathFn } from "./utils";
 
+import AutoDllPlugin from "autodll-webpack-plugin";
+
+
 const devConfig: webpack.Configuration = {
   mode: "development",
   devServer: {
@@ -35,22 +38,16 @@ const devConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new webpack.DllReferencePlugin({
-      context: pathFn("./"),
-      manifest: require(pathFn("./dll/react.mainfest.json")),
-    }),
-    new webpack.DllReferencePlugin({
-      context: pathFn("./"),
-      manifest: require(pathFn("./dll/antd.mainfest.json")),
-    }),
-    new webpack.DllReferencePlugin({
-      context: pathFn("./"),
-      manifest: require(pathFn("./dll/bizcharts.mainfest.json")),
-    }),
-    new webpack.DllReferencePlugin({
-      context: pathFn("./"),
-      manifest: require(pathFn("./dll/axios.mainfest.json")),
-    }),
+    new AutoDllPlugin({
+      inject: true, // will inject the DLL bundles to index.html
+      filename: '[name].dll.js',
+      entry: {
+        react: ["react", "react-dom", "react-router-dom"],
+        antd: ["antd"],
+        bizcharts: ["bizcharts"],
+        axios: ["axios"],
+      }
+    })
   ],
   devtool: "inline-source-map",
 };

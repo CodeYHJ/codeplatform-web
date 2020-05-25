@@ -22,6 +22,11 @@ import webpack from "webpack";
 
 import { pathFn } from "./utils";
 
+import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+
+import AutoDllPlugin from "autodll-webpack-plugin";
+
+
 const smp = new SpeedMeasurePlugin();
 
 const proConfig: webpack.Configuration = {
@@ -71,15 +76,31 @@ const proConfig: webpack.Configuration = {
       threshold: 10240, //只处理比这个值大的资源。按字节计算
       minRatio: 0.8, //只有压缩率比这个值小的资源才会被处理
     }),
+    // new webpack.DllReferencePlugin({
+    //   context: pathFn("./admin/dll"),
+    //   manifest: require(pathFn("./admin/dll/antd.mainfest.json")),
+    // }),
+    // new webpack.DllReferencePlugin({
+    //   context: pathFn("./admin/dll"),
+    //   manifest: require(pathFn("./admin/dll/axios.mainfest.json")),
 
-    new webpack.DllReferencePlugin({
-      context: pathFn("./"),
-      manifest: require(pathFn("./dll/antd.mainfest.json")),
-    }),
-    new webpack.DllReferencePlugin({
-      context: pathFn("./"),
-      manifest: require(pathFn("./dll/axios.mainfest.json")),
-    }),
+    // }),
+    new HardSourceWebpackPlugin(),
+    new HardSourceWebpackPlugin.ExcludeModulePlugin(
+      [
+        {
+          test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
+        },
+      ]
+    ),
+    new AutoDllPlugin({
+      inject: true, // will inject the DLL bundles to index.html
+      filename: '[name].dll.js',
+      entry: {
+        antd: ["antd"],
+        axios: ["axios"],
+      }
+    })
   ],
   optimization: {
     minimizer: [
@@ -110,6 +131,9 @@ const proConfig: webpack.Configuration = {
     bizcharts: "BizCharts",
   },
 };
-const mergeConfig = smp.wrap(merge(baseConfig, proConfig));
+// const mergeConfig = smp.wrap(merge(baseConfig, proConfig));
+
+const mergeConfig = merge(baseConfig, proConfig);
+
 
 export default mergeConfig;

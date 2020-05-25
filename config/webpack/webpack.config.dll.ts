@@ -11,14 +11,14 @@ const dllConfig = {
   },
   output: {
     filename: "[name].dll.js",
-    path: pathFn("./dll"),
+    path: pathFn("./admin/dll"),
     library: "[name]_dll_[hash]",
   },
   plugins: [
     new webpack.DllPlugin({
       name: "[name]_dll_[hash]",
-      path: pathFn("./dll/[name].mainfest.json"),
-      context: pathFn("./"),
+      path: pathFn("./admin/dll/[name].mainfest.json"),
+      context: pathFn("./admin/dll"),
     }),
   ],
 };
