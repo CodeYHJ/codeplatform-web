@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Checkbox, Modal, Select, Form, Input, Dropdown, Button, Menu } from 'antd';
+import { Checkbox, Modal, Select, Form, Input, Dropdown, Button, Menu, message } from 'antd';
 import { BaseMicrotask, upDateMicroTaskStatus, upDateMicroTaskDsc, upDateMicroTaskLevel, upDateMicroTaskRemark } from '@api/task';
 import { CheckboxChangeEvent } from 'antd/lib/checkbox/Checkbox';
 import CheckSquareOutlined from "@ant-design/icons/lib/icons/CheckSquareOutlined"
@@ -52,7 +52,10 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
         const value = checked ? 1 : 0
         upDateMicroTaskStatus({ id: microTask.id, complete: value }).then(res => {
             const { status = false } = res
-            if (status) setChecked(checked)
+            if (status) {
+                message.success({ content: '更新状态成功', key: `${new Date().getTime()}` })
+                setChecked(checked)
+            }
         }).then(() => {
             props.upDateFn()
         })
@@ -63,12 +66,21 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
     const handleButtonMenuClick = (e: ClickParam) => {
         const key = e.key
         setButtonKey(key)
-        upDateMicroTaskLevel({ id: microTask.id, priority: Number(key) }).then(() => { props.upDateFn() })
+        upDateMicroTaskLevel({ id: microTask.id, priority: Number(key) }).then((res) => {
+            message.success({ content: '更新优先级成功', key: `${new Date().getTime()}` })
+            props.upDateFn()
+        })
     }
     const handleStatusMenuClick = (e: ClickParam) => {
         const key = e.key
         setStatusKey(key)
-        upDateMicroTaskStatus({ id: microTask.id, complete: Number(key) }).then(() => { props.upDateFn() })
+        upDateMicroTaskStatus({ id: microTask.id, complete: Number(key) }).then((res) => {
+            const { status = false } = res
+            if (status) {
+                message.success({ content: '更新状态成功', key: `${new Date().getTime()}` })
+            }
+            props.upDateFn()
+        })
     }
     const handleTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setRemark(e.target.value)
@@ -89,7 +101,11 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
             setOpenRemark(false)
             return;
         }
-        upDateMicroTaskRemark({ id: microTask.id, remark: remark }).then(() => {
+        upDateMicroTaskRemark({ id: microTask.id, remark: remark }).then((res) => {
+            const { status = false } = res
+            if (status) {
+                message.success({ content: '更新备注成功', key: `${new Date().getTime()}` })
+            }
             setOpenRemark(false)
         }).then(() => { props.upDateFn() })
     }

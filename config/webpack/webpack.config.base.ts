@@ -1,6 +1,5 @@
 import moduleConfig from "./moduleConfig";
 
-
 import webpack from "webpack";
 
 import { pathFn } from "./utils";

@@ -3,7 +3,7 @@ import CloseOutlined from "@ant-design/icons/lib/icons/CloseOutlined"
 import styles from "./index.less"
 
 import { MyIcon } from '@component/MyIcon';
-import { Popover, Divider, Input, Button } from 'antd';
+import { Popover, Divider, Input, Button, message } from 'antd';
 import { createTaskRequest } from "@api/task";
 export interface CreateTaskProps {
     handleRender: () => void
@@ -41,6 +41,7 @@ const CreateTask: React.SFC<CreateTaskProps> = (props) => {
         createTaskRequest({ name: value }).then(res => {
             const { status = false } = res
             if (status) {
+                message.success({content:'创建成功',key:`${new Date().getTime()}`})
                 setValue('')
                 props.handleRender()
             }

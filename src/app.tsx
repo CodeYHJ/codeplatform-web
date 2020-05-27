@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 
 import Provider from "@store/index";
 
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, useHistory } from "react-router-dom";
 
 import { ErrorBoundary } from '@page/ErrorBoundary'
 
@@ -13,7 +13,7 @@ import Loading from "@component/Loading"
 import { NotFound } from '@page/NotFound';
 
 import styles from './app.less'
-// import "./init.less";
+
 
 export interface AppProps {
 
@@ -27,6 +27,9 @@ const Registered = lazy(() => import(/* webpackChunkName: "Registered" */ "@page
 
 
 const App: React.SFC<AppProps> = () => {
+    const history = useHistory()
+    const auth = localStorage.getItem("user");
+    if (!auth) history.replace('/login')
 
     return (
         <div className={styles.app}>

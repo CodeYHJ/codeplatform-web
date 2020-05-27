@@ -27,7 +27,6 @@ export default {
       include: /[\\/]node_modules[\\/](antd)[\\/]/,
       exclude: pathFn("/src"),
       use: [
-        "cache-loader",
         process.env.NODE_ENV === "development"
           ? "style-loader"
           : MiniCssExtractPlugin.loader,
@@ -39,7 +38,6 @@ export default {
       test: /\.less$/,
       include: pathFn("./src"),
       use: [
-        "cache-loader",
         process.env.NODE_ENV === "development"
           ? "style-loader"
           : MiniCssExtractPlugin.loader,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Calendar, Button } from 'antd';
+import { Menu, Calendar, Button, message } from 'antd';
 import locale from 'antd/es/date-picker/locale/zh_CN';
 import styles from './index.less'
 import { ClickParam } from 'antd/lib/menu';
@@ -34,6 +34,7 @@ const TaskOption: React.SFC<TaskOptionProps> = (props) => {
             deleteAllMicroTask({ taskid: props.taskid }).then(res => {
                 const { status = false } = res
                 if (status) {
+                    message.success({ content: '清空微任务成功', key: `${new Date().getTime()}` })
                     props.upDateFn()
                     props.closePopover()
                 }
@@ -44,6 +45,7 @@ const TaskOption: React.SFC<TaskOptionProps> = (props) => {
             deleteTaskRequest({ taskid: props.taskid }).then(res => {
                 const { status = false } = res
                 if (status) {
+                    message.success({ content: '删除任务成功', key: `${new Date().getTime()}` })
                     props.upDateAllFn()
                 }
             })
@@ -56,6 +58,7 @@ const TaskOption: React.SFC<TaskOptionProps> = (props) => {
         upDateDeadTime({ id: props.taskid, endtime: calendarValue.format() }).then(res => {
             const { status = false } = res
             if (status) {
+                message.success({ content: 'Dead Line 设置成功', key: `${new Date().getTime()}` })
                 props.upDateFn()
                 props.closePopover()
                 props.closeSub()

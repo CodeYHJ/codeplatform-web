@@ -45,38 +45,46 @@ const devConfig: webpack.Configuration = {
   },
   plugins: [
     new HtmlwebpackPlugin({
-      inject: true,
       title: "admin",
       template: pathFn("./config/HTML/index.html"),
       favicon: pathFn("./config/HTML/favicon.ico"),
-      dll: [
-        '/dll/antd.dll.js',
-        '/dll/react.dll.js',
-        '/dll/bizcharts.dll.js',
-        '/dll/axios.dll.js',
-      ]
     }),
-    new webpack.DllReferencePlugin({
-      context: pathFn("./admin/dll"),
-      manifest: require(pathFn("./admin/dll/antd.mainfest.json")),
+    new HardSourceWebpackPlugin({
+      // Either an absolute path or relative to webpack's options.context.
+      cacheDirectory: 'node_modules/.cache/hard-source/[confighash]',
+      // Either a string of object hash function given a webpack config.
+      configHash: function(webpackConfig) {
+        // node-object-hash on npm can be used to build this.
+        return require('node-object-hash')({sort: false}).hash(webpackConfig);
+      },
+      // Either false, a string, an object, or a project hashing function.
+      environmentHash: {
+        root: process.cwd(),
+        directories: [],
+        files: ['package-lock.json', 'yarn.lock'],
+      },
+      // An object.
+      info: {
+        // 'none' or 'test'.
+        mode: 'none',
+        // 'debug', 'log', 'info', 'warn', or 'error'.
+        level: 'debug',
+      },
+      // Clean up large, old caches automatically.
+      cachePrune: {
+        // Caches younger than `maxAge` are not considered for deletion. They must
+        // be at least this (default: 2 days) old in milliseconds.
+        maxAge: 2 * 24 * 60 * 60 * 1000,
+        // All caches together must be larger than `sizeThreshold` before any
+        // caches will be deleted. Together they must be at least this
+        // (default: 50 MB) big in bytes.
+        sizeThreshold: 50 * 1024 * 1024
+      },
     }),
-    new webpack.DllReferencePlugin({
-      context: pathFn("./admin/dll"),
-      manifest: require(pathFn("./admin/dll/axios.mainfest.json")),
-    }),
-    new webpack.DllReferencePlugin({
-      context: pathFn("./admin/dll"),
-      manifest: require(pathFn("./admin/dll/bizcharts.mainfest.json")),
-    }),
-    new webpack.DllReferencePlugin({
-      context: pathFn("./admin/dll"),
-      manifest: require(pathFn("./admin/dll/react.mainfest.json")),
-    }),
-    new HardSourceWebpackPlugin()
   ],
   devtool: "inline-source-map",
 
 };
-const mergeConfig = smp.wrap(merge(baseConfig, devConfig));
+// const mergeConfig = smp.wrap(merge(baseConfig, devConfig));
 
-export default mergeConfig;
+export default merge(baseConfig, devConfig);

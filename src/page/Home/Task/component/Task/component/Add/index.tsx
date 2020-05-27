@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Input, Button, Divider } from 'antd';
+import { Input, Button, Divider, message } from 'antd';
 import { findDOMNode } from 'react-dom';
 import { createMicroRequest } from '@api/task';
 const { TextArea } = Input;
@@ -44,6 +44,8 @@ const AddDropDown: React.SFC<AddDropDownComProps> = (props) => {
         createMicroRequest({id:props.id,name:text}).then(res=>{
             const {status=false}= res
             if(status){
+                message.success({content:'新增微任务成功',key:`${new Date().getTime()}`})
+
                 props.upDateFn()
                 props.handleStatus(false)
             }
