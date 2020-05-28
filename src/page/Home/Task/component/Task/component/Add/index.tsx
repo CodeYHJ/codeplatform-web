@@ -45,7 +45,6 @@ const AddDropDown: React.SFC<AddDropDownComProps> = (props) => {
             const {status=false}= res
             if(status){
                 message.success({content:'新增微任务成功',key:`${new Date().getTime()}`})
-
                 props.upDateFn()
                 props.handleStatus(false)
             }
