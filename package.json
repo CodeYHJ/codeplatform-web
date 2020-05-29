@@ -11,7 +11,7 @@
     "cross-pre": "cross-env NODE_ENV=production DEPLOY=pre TS_NODE_PROJECT=\"config/webpack/tsconfig-for-webpack-config.json\"",
     "dev": "yarn cross-dev webpack-dev-server --config ./config/webpack/webpack.config.dev.ts --hot",
     "build:pretest": "yarn cross-pre webpack --config ./config/webpack/webpack.config.pro.ts",
-    "build:pro": "yarn cross-pro --config ./config/webpack/webpack.config.pro.ts",
+    "build:pro": "yarn cross-pro webpack --config ./config/webpack/webpack.config.pro.ts",
     "commit": "git add . && commit && git push",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },

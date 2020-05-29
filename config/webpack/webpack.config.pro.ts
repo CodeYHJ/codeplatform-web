@@ -2,7 +2,6 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer";
 
-
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 import optimizeCssPlugin from "optimize-css-assets-webpack-plugin";
@@ -20,9 +19,6 @@ import baseConfig from "./webpack.config.base";
 import webpack from "webpack";
 
 import { pathFn } from "./utils";
-
-
-
 
 const proConfig: webpack.Configuration = {
   mode: "production",
@@ -47,7 +43,6 @@ const proConfig: webpack.Configuration = {
           "https://gw.alipayobjects.com/os/lib/bizcharts/4.0.3/umd/BizCharts.js",
         ],
       },
-
     }),
     //分析
     // new BundleAnalyzerPlugin(),
@@ -74,7 +69,7 @@ const proConfig: webpack.Configuration = {
     }),
   ],
   optimization: {
-    runtimeChunk: { name: 'manifest' },
+    runtimeChunk: { name: "manifest" },
     minimizer: [
       new TerserPlugin({
         cache: true,
@@ -103,6 +98,6 @@ const proConfig: webpack.Configuration = {
     bizcharts: "BizCharts",
   },
 };
-const mergeConfig = merge(baseConfig, proConfig)
+const mergeConfig = merge(baseConfig, proConfig);
 
 export default mergeConfig;
