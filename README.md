@@ -2,11 +2,21 @@
 
 ## 个人任务管理平台
 
-个人任务管理平台 [地址](https://admin.codeyhj.cn)
+个人任务管理平台 
 
-主要记录个人日常开发工作安排细分与统计。由React、React-Router组成，all in hooks。从零开始搭建，不借助其他脚手架，由本人编写。
+[正式环境地址](https://admin.codeyhj.cn)
 
-本项目虽然是个人编写，但是里面包含了团队了使用到的测试、自动部署等。
+正式环境账号可自主注册
+
+[测试环境地址](https://pretest.codeyhj.cn)
+
+测试环境 账号：test  密码：123456
+
+主要记录个人日常开发工作安排细分与统计。由React、React-Router组成，All In Hook。
+
+从零开始搭建，不借助其他脚手架，由本人编写。
+
+本项目虽然是个人编写，但是里面包含了团队了使用到的测试、自动部署等糅合在一起的个人项目。
 
 ## 主要支线
 
@@ -73,17 +83,7 @@
 │       ├── utils.ts
 │       ├── webpack.config.base.ts
 │       ├── webpack.config.dev.ts
-│       ├── webpack.config.dll.ts
 │       └── webpack.config.pro.ts
-├── dll
-│   ├── antd.dll.js
-│   ├── antd.manifest.json
-│   ├── axios.dll.js
-│   ├── axios.manifest.json
-│   ├── bizcharts.dll.js
-│   ├── bizcharts.manifest.json
-│   ├── react.dll.js
-│   └── react.manifest.json
 ├── package.json
 ├── postcss.config.js
 ├── src
@@ -99,7 +99,6 @@
 │   ├── assets
 │   │   └── img
 │   ├── helper.less
-│   ├── init.less
 │   ├── page
 │   │   ├── BaseLayout
 │   │   ├── Component
@@ -118,6 +117,7 @@
 │   └── util
 │       └── index.tsx
 ├── tsconfig.json
+├── yarn-error.log
 └── yarn.lock
 
 ```
