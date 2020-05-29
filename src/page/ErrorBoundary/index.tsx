@@ -16,13 +16,13 @@ export class ErrorBoundary extends React.Component<any, { hasError: boolean }> {
     componentDidCatch(error: Error, info: any) {
         this.setState({ hasError: true });
         // 将报错发送到Fundebug
-        // if (process.env.NODE_ENV === "production") {
-        //     fundebug.notifyError(error, {
-        //         metaData: {
-        //             info: info
-        //         }
-        //     });
-        // }
+        if (process.env.NODE_ENV === "production") {
+            fundebug.notifyError(error, {
+                metaData: {
+                    info: info
+                }
+            });
+        }
 
     }
 

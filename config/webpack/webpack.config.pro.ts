@@ -47,6 +47,7 @@ const proConfig: webpack.Configuration = {
           "https://gw.alipayobjects.com/os/lib/bizcharts/4.0.3/umd/BizCharts.js",
         ],
       },
+
     }),
     //分析
     // new BundleAnalyzerPlugin(),
@@ -73,6 +74,7 @@ const proConfig: webpack.Configuration = {
     }),
   ],
   optimization: {
+    runtimeChunk: { name: 'manifest' },
     minimizer: [
       new TerserPlugin({
         cache: true,
