@@ -51,19 +51,16 @@
 
 ## 技术栈
 
-### 前端
+### 前端 [地址](https://github.com/CodeYHJ/codeplatform-web)
 
 - TypeScript
 - React
+- React-Router
 - Axios
 - webpack（自定义配置）
 - less
 
-[地址](https://github.com/CodeYHJ/codeplatform-web)
-
-### 后端
-
-[地址](https://github.com/CodeYHJ/codeplatform-api)
+### 后端  [地址](https://github.com/CodeYHJ/codeplatform-api)
 
 ## 前端项目结构
 
