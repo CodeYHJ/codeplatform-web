@@ -27,7 +27,6 @@ import Login from "@page/Login/index"
 import Registered from "@page/Registered/index"
 
 
-
 const App: React.SFC<AppProps> = () => {
     return (
         <div className={styles.app}>
@@ -35,6 +34,7 @@ const App: React.SFC<AppProps> = () => {
                 <Provider>
                     <Suspense fallback={<Loading />}>
                         <Switch>
+
                             <Redirect path="/" exact to="/login"></Redirect>
                             <Route path="/login" exact component={Login} />
                             <Route path="/registered" exact component={Registered} />

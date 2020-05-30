@@ -9,7 +9,7 @@ import { ClickParam } from 'antd/lib/menu';
 import { isInWeek } from '@util/';
 import { isTomorrow } from '@util/';
 import moment from 'moment';
-import { MyIcon } from '@page/component/MyIcon';
+import { MyIcon } from '@component/MyIcon';
 
 const { TextArea } = Input
 export interface MicroTaskProps {
