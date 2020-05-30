@@ -71,7 +71,7 @@ const Task: React.SFC<TaskProps> = (props) => {
         return list
     }
     return (
-        <Col md={4} xs={5}>
+        <Col md={8} lg={5}>
             <div className={styles.task}>
                 <div className={styles.title}>
                     <div className={styles.titleText} >

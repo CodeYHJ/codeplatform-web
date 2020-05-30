@@ -9,6 +9,7 @@ import { ClickParam } from 'antd/lib/menu';
 import { isInWeek } from '@util/';
 import { isTomorrow } from '@util/';
 import moment from 'moment';
+import { MyIcon } from '@page/component/MyIcon';
 
 const { TextArea } = Input
 export interface MicroTaskProps {
@@ -180,6 +181,15 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
 
         }
     }
+    const RenderLabel = (icon: string, text: string) => {
+        return (
+            <div className={styles.labelStyle}>
+                <MyIcon type={icon} className={styles.labelSvg} ></MyIcon>
+                {text}
+            </div>
+        )
+    }
+
     const DropdownButtonMenu = (
         <Menu style={{ textAlign: 'center' }} onClick={handleButtonMenuClick} >
             <Menu.Item key="0">
@@ -211,6 +221,9 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
 
         </Menu>
     )
+    const tre = (
+        <div>asd</div>
+    )
     return (
         <div className={styles.microTask} >
             <Checkbox className={styles.checkBox} checked={checked} onChange={onChange} />
@@ -241,8 +254,8 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
                             {name}
                         </div>
                     </div>
-                    <Form labelCol={{ span: 4 }} labelAlign="left">
-                        <Form.Item colon={false} label="状态" className={styles.mStatus}>
+                    <Form labelCol={{ span: 4 }} labelAlign="left" className={styles.microTaskFormStyles}>
+                        <Form.Item colon={false} label={RenderLabel("icon-jurassic_complete", "状态")} className={styles.mStatus}>
                             <Dropdown
                                 className={styles.status}
                                 overlay={DropdownStatusMenu}
@@ -251,10 +264,10 @@ const MicroTask: React.SFC<MicroTaskProps> = (props) => {
                                 {RenderStatus()}
                             </Dropdown>
                         </Form.Item>
-                        <Form.Item colon={false} label="备注" className={styles.mRemarks}>
+                        <Form.Item colon={false} label={RenderLabel("icon-flow-Mark", "备注")} className={styles.mRemarks}>
                             {RenderRemark()}
                         </Form.Item>
-                        <Form.Item colon={false} label="优先级" className={styles.mPriority}>
+                        <Form.Item colon={false} label={RenderLabel("icon-priority", "优先级")} className={styles.mPriority}>
                             <Dropdown
                                 className={styles.buttons}
                                 overlay={DropdownButtonMenu}
