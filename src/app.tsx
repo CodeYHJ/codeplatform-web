@@ -19,11 +19,12 @@ export interface AppProps {
 
 }
 
-const Login = lazy(() => import(/* webpackChunkName: "Login" */"@page/Login/index"))
 
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ "@page/Home/index"))
 
-const Registered = lazy(() => import(/* webpackChunkName: "Registered" */ "@page/Registered/index"))
+import Login from "@page/Login/index"
+
+import Registered from "@page/Registered/index"
 
 
 const App: React.SFC<AppProps> = () => {
@@ -33,6 +34,7 @@ const App: React.SFC<AppProps> = () => {
                 <Provider>
                     <Suspense fallback={<Loading />}>
                         <Switch>
+
                             <Redirect path="/" exact to="/login"></Redirect>
                             <Route path="/login" exact component={Login} />
                             <Route path="/registered" exact component={Registered} />

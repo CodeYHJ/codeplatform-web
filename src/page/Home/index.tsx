@@ -19,6 +19,7 @@ const Home: React.SFC<HomeProps> = () => {
         <BaseLayout>
             <Suspense fallback={<Loading />}>
                 <Switch>
+
                     {routes.map((route, index) => {
                         return <Route key={`subs${index}`} component={route.component} path={route.path}></Route>
                     })}
