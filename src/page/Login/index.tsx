@@ -27,13 +27,6 @@ const Login: React.SFC = () => {
 
     const history = useHistory()
 
-    useEffect(() => {
-        const user = localStorage.getItem("user")
-        if (user) {
-            history.replace('/home/chart')
-            dispatchForeUser({ type: 'CHANGE_USER_INFO', playload: JSON.parse(user) })
-        }
-    }, [])
 
     const onChangeOfName = (e: React.FormEvent<HTMLInputElement>) => {
         setName(e.currentTarget.value)

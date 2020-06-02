@@ -6,6 +6,8 @@ import { pathFn } from "./utils";
 
 import HappyPack from "happypack";
 
+import AntdDayjsWebpackPlugin from 'antd-dayjs-webpack-plugin';
+
 const config: webpack.Configuration = {
   entry: pathFn("./src/app.tsx"),
   output: {
@@ -28,6 +30,7 @@ const config: webpack.Configuration = {
     },
   },
   plugins: [
+    new AntdDayjsWebpackPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),

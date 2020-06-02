@@ -19,11 +19,13 @@ export interface AppProps {
 
 }
 
-const Login = lazy(() => import(/* webpackChunkName: "Login" */"@page/Login/index"))
+const Transition = lazy(() => import(/* webpackChunkName: "Transition" */"@page/Transition/index"))
 
-const Home = lazy(() => import(/* webpackChunkName: "Home" */ "@page/Home/index"))
+const Login = lazy(() => import(/* webpackChunkName: "Login" ,webpackPrefetch: true*/"@page/Login/index"))
 
-const Registered = lazy(() => import(/* webpackChunkName: "Registered" */ "@page/Registered/index"))
+const Home = lazy(() => import(/* webpackChunkName: "Home" ,webpackPrefetch: true*/ "@page/Home/index"))
+
+const Registered = lazy(() => import(/* webpackChunkName: "Registered" ,webpackPrefetch: true*/ "@page/Registered/index"))
 
 
 const App: React.SFC<AppProps> = () => {
@@ -33,7 +35,7 @@ const App: React.SFC<AppProps> = () => {
                 <Provider>
                     <Suspense fallback={<Loading />}>
                         <Switch>
-                            <Redirect path="/" exact to="/login"></Redirect>
+                            <Route path="/" exact component={Transition}></Route>
                             <Route path="/login" exact component={Login} />
                             <Route path="/registered" exact component={Registered} />
                             <Route path="/home" component={Home} />

@@ -36,7 +36,7 @@ export const BaseLayout: React.SFC<BaseLayoutProps> = (props) => {
         const auth = localStorage.getItem("user");
 
         if (!auth) {
-            history.replace('/')
+            history.replace('/login')
         }
 
         if (userStore.name === '') {
