@@ -35,7 +35,7 @@ const proConfig: webpack.Configuration = {
   plugins: [
     //清除上一次打包
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin.BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin.BundleAnalyzerPlugin(),
     new HtmlwebpackPlugin({
       title: "admin",
       template: pathFn("./config/HTML/index.html"),
