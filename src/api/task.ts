@@ -4,7 +4,7 @@ import {
   InitTaskState,
   SelectType,
   FrequencyEnum,
-} from "@store/task/taskTypes";
+} from "@store/microTask/microTaskTypes";
 
 import { PromiseAxios, PromiseAxiosNoPra } from "./char";
 
@@ -36,11 +36,11 @@ interface AddTaskResponse {
   task: BaseTask;
 }
 
-interface DeleteMicroTaskResponse extends UpdateTaskResponse { }
+interface DeleteMicroTaskResponse extends UpdateTaskResponse {}
 
-interface DeleteMicroTaskResponse extends UpdateTaskResponse { }
+interface DeleteMicroTaskResponse extends UpdateTaskResponse {}
 
-interface ClosetaskResponse extends UpdateTaskResponse { }
+interface ClosetaskResponse extends UpdateTaskResponse {}
 
 export const getTasks: PromiseAxios<unknown, TaskResponse> = () => {
   return request.get("task/tasks");
@@ -97,10 +97,10 @@ export interface BaseMicrotask {
   dsc: string;
   complete: number;
   remark: null | string;
-  priority: number,
-  endtime:string,
+  priority: number;
+  endtime: string;
 }
-interface CreateTaskRequest extends BaseRequest { }
+interface CreateTaskRequest extends BaseRequest {}
 
 export const createTaskRequest: PromiseAxios<
   CreateTaskRequest,
@@ -138,9 +138,9 @@ export const getTaskByTaskId: PromiseAxios<
   return request.get("/task/getTask", { params: data });
 };
 
-interface DeleteTaskRequest extends GetTaskByTaskIdRequest { }
+interface DeleteTaskRequest extends GetTaskByTaskIdRequest {}
 
-interface DeleteTaskResponse extends BaseStatusResponse { }
+interface DeleteTaskResponse extends BaseStatusResponse {}
 
 export const deleteTaskRequest: PromiseAxios<
   DeleteTaskRequest,
@@ -152,7 +152,7 @@ interface UpDateMicroTaskStatusRequest {
   id: number;
   complete: number;
 }
-interface UpDateMicroTaskStatusResponse extends UpdateTaskResponse { }
+interface UpDateMicroTaskStatusResponse extends UpdateTaskResponse {}
 
 export const upDateMicroTaskStatus: PromiseAxios<
   UpDateMicroTaskStatusRequest,
@@ -165,7 +165,7 @@ interface UpDateMicroTaskDscRequest {
   id: number;
   dsc: string;
 }
-interface UpDateMicroTaskDscResponse extends UpdateTaskResponse { }
+interface UpDateMicroTaskDscResponse extends UpdateTaskResponse {}
 
 export const upDateMicroTaskDsc: PromiseAxios<
   UpDateMicroTaskDscRequest,
@@ -178,7 +178,7 @@ interface UpDateMicroTaskLevelRequest {
   id: number;
   priority: number;
 }
-interface UpDateMicroTaskLevelResponse extends UpdateTaskResponse { }
+interface UpDateMicroTaskLevelResponse extends UpdateTaskResponse {}
 
 export const upDateMicroTaskLevel: PromiseAxios<
   UpDateMicroTaskLevelRequest,
@@ -187,12 +187,11 @@ export const upDateMicroTaskLevel: PromiseAxios<
   return request.post("/task/upMlevel", data);
 };
 
-
 interface UpDateMicroTaskRemarkRequest {
   id: number;
   remark: string;
 }
-interface UpDateMicroTaskRemarkResponse extends UpdateTaskResponse { }
+interface UpDateMicroTaskRemarkResponse extends UpdateTaskResponse {}
 
 export const upDateMicroTaskRemark: PromiseAxios<
   UpDateMicroTaskRemarkRequest,
@@ -205,7 +204,7 @@ interface UpDateDeadTimeRequest {
   id: number;
   endtime?: string;
 }
-interface UpDateDeadTimeResponse extends UpdateTaskResponse { }
+interface UpDateDeadTimeResponse extends UpdateTaskResponse {}
 export const upDateDeadTime: PromiseAxios<
   UpDateDeadTimeRequest,
   UpDateDeadTimeResponse
@@ -213,14 +212,25 @@ export const upDateDeadTime: PromiseAxios<
   return request.post("/task/upMtime", data);
 };
 
-
 interface DeleteAllMicroTaskRequest {
   taskid: number;
 }
-interface DeleteAllMicroTaskResponse extends UpdateTaskResponse { }
+interface DeleteAllMicroTaskResponse extends UpdateTaskResponse {}
 export const deleteAllMicroTask: PromiseAxios<
-DeleteAllMicroTaskRequest,
-DeleteAllMicroTaskResponse
+  DeleteAllMicroTaskRequest,
+  DeleteAllMicroTaskResponse
 > = (data) => {
   return request.post("/task/deleteMall", data);
+};
+
+interface UpDateTaskNameRequest {
+  id: number;
+  name: string;
+}
+interface UpDateTaskNameResponse extends UpdateTaskResponse {}
+export const upDateTaskName: PromiseAxios<
+  UpDateTaskNameRequest,
+  UpDateTaskNameResponse
+> = (data) => {
+  return request.post("/task/upName", data);
 };

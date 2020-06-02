@@ -1,10 +1,10 @@
 import { UserProvider } from "./user/userContext";
-import { TaskProvider } from "./task/taskContext";
+import { MicroTaskProvider } from "./microTask/microTaskContext";
 
 import React from "react";
 
 type ProviderList = React.SFC[];
-const providers: ProviderList = [UserProvider, TaskProvider];
+const providers: ProviderList = [UserProvider, MicroTaskProvider];
 
 const Providers = (props: any) => {
     return providers.reduceRight((children, Parent) => {

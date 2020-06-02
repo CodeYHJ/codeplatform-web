@@ -1,4 +1,6 @@
 
+
+
 type MicrotaskModel = {
   taskid: number;
   dsc: string;
@@ -20,16 +22,6 @@ export enum SelectType {
   Date = 1,
   Frequency,
 }
-export interface InitTaskState {
-  id: number;
-  name: string;
-  type?: SelectType;
-  frequency?: FrequencyEnum;
-  complete?: Complete;
-  microtasks?: MicrotaskModel[];
-  starttime?: string;
-  endtime?: string
-}
 
 export interface playloadState {
   id?: number;
@@ -42,9 +34,17 @@ export interface playloadState {
   microtasks?: MicrotaskModel[];
 }
 
-export type Action = { type: "EDIT", playload: playloadState } | { type: "EDIT_OUT" } | { type: "FILTER" }
+
+export interface InitTaskState {
+  titleOPen?: boolean;
+  dateOpen?: boolean;
+  nameOpen?: boolean;
+
+}
+
+export type Action = { type: "CLOSE_ALL" } | { type: "CLOSE", playload: InitTaskState } | { type: "OPEN", playload: InitTaskState }
 
 export interface IContextProps {
-  taskStore: InitTaskState,
+  microTaskStore: InitTaskState,
   dispatchForeTask: React.Dispatch<Action>
 }
