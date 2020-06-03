@@ -1,9 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
 import styles from './index.less'
-import { Spin } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '@store/user/userContext';
-import { MyIcon } from '@component/MyIcon';
+import MyLogo from '@img/myLogo.svg'
 export interface TransitionProps {
 
 }
@@ -31,11 +30,19 @@ const Transition: React.SFC<TransitionProps> = () => {
 
     return (
         <div className={styles.transition}>
-            <MyIcon className={styles.logoSvg} type="icon-myLogo" />
+            <img className={styles.logoSvg} src={MyLogo} />
             <div className={styles.name}>Admin</div>
-            <div className={styles.spinLoading}>
-                <Spin size="large" />
+            <div className={styles.spinBox}>
+                <div className={styles.spin}>
+                    <span className={styles.spanDot}>
+                        <i className={styles.spinDotItem}></i>
+                        <i className={styles.spinDotItem}></i>
+                        <i className={styles.spinDotItem}></i>
+                        <i className={styles.spinDotItem}></i>
+                    </span>
+                </div>
             </div>
+
         </div>
     );
 }

@@ -1,29 +1,97 @@
 @import "~@/helper.less";
 
-.transition{
-    height: 100vh;
-    .col_layout();
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    margin-top:-60px;
-
+.transition {
+  height: 100vh;
+  .col_layout();
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: -60px;
 }
-.name{
-    font-family: "Hiragino Sans GB", "Microsoft YaHei","PingFang SC",Arial, Helvetica, sans-serif;
+.name {
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "PingFang SC", Arial,
+    Helvetica, sans-serif;
 }
 
-.logoSvg{
-    svg{
-        width: 250px;
-        height: 250px;
-    }
-
+.logoSvg {
+  width: 250px;
+  height: 250px;
 }
-.spinLoading{
-    .row_layout();
-    justify-content: center;
-    margin-top:60px;
-    height: 60px;
-    width: 60px;
+
+.spinBox {
+  .row_layout();
+  justify-content: center;
+  margin-top: 60px;
+  height: 60px;
+  width: 60px;
+}
+.spin {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum";
+  position: static;
+  display: inline-block;
+  color: #1890ff;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 1;
+  transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+}
+.spanDot {
+  position: relative;
+  display: inline-block;
+  font-size: 32px;
+  width: 1em;
+  height: 1em;
+  transform: rotate(45deg);
+  animation: rotate 1.2s infinite linear;
+}
+.spinDotItem {
+  position: absolute;
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-color: #1890ff;
+  border-radius: 100%;
+  transform: scale(0.75);
+  transform-origin: 50% 50%;
+  opacity: 0.3;
+  animation: spinMove 1s infinite linear alternate;
+  &:nth-child(1) {
+    top: 0;
+    left: 0;
+  }
+  &:nth-child(2) {
+    top: 0;
+    right: 0;
+    animation-delay: 0.4s;
+  }
+  &:nth-child(3) {
+    right: 0;
+    bottom: 0;
+    animation-delay: 0.8s;
+  }
+  &:nth-child(4) {
+    bottom: 0;
+    left: 0;
+    animation-delay: 1.2s;
+  }
+}
+
+@keyframes spinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(405deg);
+  }
 }
