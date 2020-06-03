@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useState } from 'react';
-import logo from "@img/myLogo.png"
 import styles from './index.less'
 import { Spin } from 'antd';
 import { useHistory } from 'react-router-dom';
