@@ -23,7 +23,7 @@ const Transition: React.SFC<TransitionProps> = () => {
         } else {
             const timer = setTimeout(() => {
                 history.replace('/login')
-            }, 1000)
+            }, 2000)
             return () => {
                 clearTimeout(timer)
             }
