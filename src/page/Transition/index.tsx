@@ -3,7 +3,7 @@ import styles from './index.less'
 import { Spin } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '@store/user/userContext';
-import { MyIcon } from '@page/component/MyIcon';
+import { MyIcon } from '@component/MyIcon';
 export interface TransitionProps {
 
 }
