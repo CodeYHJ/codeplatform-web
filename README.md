@@ -2,7 +2,7 @@
 
 ## 个人任务管理平台
 
-个人任务管理平台 
+个人任务管理平台
 
 [正式环境地址](https://admin.codeyhj.cn)
 
@@ -10,9 +10,9 @@
 
 [测试环境地址](https://pretest.codeyhj.cn)
 
-测试环境 账号：test  密码：123456
+测试环境 账号：test 密码：123456
 
-主要记录个人日常开发工作安排细分与统计。由React、React-Router组成，All In Hook。
+主要记录个人日常开发工作安排细分与统计。由 React、React-Router 组成，All In Hook。
 
 从零开始搭建，不借助其他脚手架，由本人编写。
 
@@ -28,26 +28,27 @@
 
 ## 搭建文章
 
-[从零搭建项目（1） -- 项目及其技术概括](https://www.yuque.com/u120129/dyqi27/gdcniz)
+[从零搭建项目 -- 发布项目流程](https://www.yuque.com/u120129/aygter/ox6drs)
 
-[从零搭建项目（2）-- 项目初始化](https://www.yuque.com/u120129/dyqi27/po32su)
+[从零搭建项目（1） -- 项目及其技术概括](https://www.yuque.com/u120129/aygter/gdcniz)
 
-[从零搭建项目（3）-- less与Ant Design](https://www.yuque.com/u120129/dyqi27/tkiiwr)
+[从零搭建项目（2）-- 项目初始化](https://www.yuque.com/u120129/aygter/po32su)
 
-[从零搭建项目（4）-- 开发体验优化](https://www.yuque.com/u120129/dyqi27/osyxvv)
+[从零搭建项目（3）-- less 与 Ant Design](https://www.yuque.com/u120129/aygter/tkiiwr)
 
-[从零搭建项目（5）-- 路由与状态管理](https://www.yuque.com/u120129/dyqi27/sg1m3b)
+[从零搭建项目（4）-- 开发体验优化](https://www.yuque.com/u120129/aygter/osyxvv)
 
-[从零搭建项目（6） -- 打包（webpack）](https://www.yuque.com/u120129/dyqi27/iowaqz)
+[从零搭建项目（5）-- 路由与状态管理](https://www.yuque.com/u120129/aygter/sg1m3b)
 
-[从零搭建项目（7）-- 使用Docker](https://www.yuque.com/u120129/dyqi27/gliga9)
+[从零搭建项目（6） -- 打包（webpack）](https://www.yuque.com/u120129/aygter/iowaqz)
 
-[从零开始搭建（8）-- 后端](https://www.yuque.com/u120129/dyqi27/kunw0y)
+[从零搭建项目（7）-- 使用 Docker](https://www.yuque.com/u120129/aygter/gliga9)
 
-[从零搭建项目（9）-- Jenkins部署与发布](https://www.yuque.com/u120129/dyqi27/gyfmq7)
+[从零开始搭建（8）-- 后端](https://www.yuque.com/u120129/aygter/kunw0y)
 
-[从零搭建项目（10） -- Nginx部署与配置](https://www.yuque.com/u120129/dyqi27/lf9tdw)
+[从零搭建项目（9）-- Jenkins 部署与发布](https://www.yuque.com/u120129/aygter/gyfmq7)
 
+[从零搭建项目（10） -- Nginx 部署与配置](https://www.yuque.com/u120129/aygter/lf9tdw)
 
 ## 技术栈
 
@@ -60,7 +61,7 @@
 - webpack（自定义配置）
 - less
 
-### 后端  [地址](https://github.com/CodeYHJ/codeplatform-api)
+### 后端 [地址](https://github.com/CodeYHJ/codeplatform-api)
 
 ## 前端项目结构
 
