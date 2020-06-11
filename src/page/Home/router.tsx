@@ -3,15 +3,15 @@ import React from 'react';
 
 import { RouteProps } from 'react-router-dom';
 
-export const User = React.lazy(() => import(/* webpackChunkName: "User" */ "@page/Home/User/index"))
+export const User = React.lazy(() => import(/* webpackChunkName: "User" ,webpackPrefetch: true*/ "@page/Home/User/index"))
 
-export const Info = React.lazy(() => import(/* webpackChunkName: "Info" */ "@page/Home/User/Info/index"))
+export const Info = React.lazy(() => import(/* webpackChunkName: "Info"  ,webpackPrefetch: true*/ "@page/Home/User/Info/index"))
 
-export const Token = React.lazy(() => import(/* webpackChunkName: "Token" */ "@page/Home/User/Token/index"))
+export const Token = React.lazy(() => import(/* webpackChunkName: "Token"  ,webpackPrefetch: true*/ "@page/Home/User/Token/index"))
 
-export const Chart = React.lazy(() => import(/* webpackChunkName: "Chart" */ "@page/Home/Chart/index"))
+export const Chart = React.lazy(() => import(/* webpackChunkName: "Chart"  ,webpackPrefetch: true*/ "@page/Home/Chart/index"))
 
-export const Task = React.lazy(() => import(/* webpackChunkName: "NewTask" */ "@page/Home/Task/index"))
+export const Task = React.lazy(() => import(/* webpackChunkName: "NewTask"  ,webpackPrefetch: true*/ "@page/Home/Task/index"))
 
 
 export interface routeType extends RouteProps {

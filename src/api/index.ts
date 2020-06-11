@@ -42,7 +42,7 @@ instance.interceptors.response.use(
       return data;
     } else if (code === "401") {
       localStorage.removeItem("user");
-      window.location.replace("/");
+      window.location.replace("/login");
     } else {
       message.error(msg);
       return Promise.reject(msg);

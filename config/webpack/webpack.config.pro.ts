@@ -31,7 +31,7 @@ const proConfig: webpack.Configuration = {
   plugins: [
     //清除上一次打包
     new CleanWebpackPlugin(),
-
+    // new BundleAnalyzerPlugin.BundleAnalyzerPlugin(),
     new HtmlwebpackPlugin({
       title: "admin",
       template: pathFn("./config/HTML/index.html"),
@@ -79,16 +79,30 @@ const proConfig: webpack.Configuration = {
     ],
     splitChunks: {
       cacheGroups: {
-        componet: {
+        axios: {
           test: /[\\/]node_modules[\\/](axios)[\\/]/,
-          name: "componet",
+          name: "axios",
           chunks: "all",
+          priority: 2
         },
         antd: {
-          test: /[\\/]node_modules[\\/](antd)[\\/]/,
+          test: /[\\/]node_modules[\\/](antd)|(@ant-design)[\\/]/,
           name: "antd",
           chunks: "all",
+          priority: 3
         },
+        moment: {
+          test: /[\\/]node_modules[\\/](moment)[\\/]/,
+          name: "moment",
+          chunks: "all",
+          priority: 4
+        },
+        rc: {
+          test: /[\\/]node_modules[\\/](rc-table)|(rc-mentions)|(rc-tree)|(rc-picker)|(rc-select)[\\/]/,
+          name: "rc",
+          chunks: "all",
+          priority: 4
+        }
       },
     },
   },

@@ -51,7 +51,7 @@ export default {
         {
           loader: "url-loader",
           options: {
-            limit: 100, //默认单位为bytes
+            limit: 8192, //默认单位为bytes
             outputPath: "images/",
           },
         },
