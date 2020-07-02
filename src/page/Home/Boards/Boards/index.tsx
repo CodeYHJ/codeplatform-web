@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Layout, Row, Col } from 'antd';
 import Task from "./component/Task";
 import styles from "./index.less"
@@ -15,7 +15,6 @@ const NewTask: React.SFC<NewTaskProps> = () => {
     const [taskList, setTaskList] = useState([])
     const [render, setRender] = useState(false)
     useEffect(() => {
-
         const getTaskList = async () => {
             await getTaskRequest().then((res) => {
                 const { taskList } = res

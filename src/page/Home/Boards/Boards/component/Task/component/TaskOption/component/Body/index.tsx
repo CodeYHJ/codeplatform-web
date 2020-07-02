@@ -62,6 +62,7 @@ const TaskOption: React.SFC<TaskOptionProps> = (props) => {
                 if (status) {
                     message.success({ content: '删除任务成功', key: `${new Date().getTime()}` })
                     props.upDateAllFn()
+                    
                 }
             })
         }
