@@ -1,21 +1,19 @@
 import React, { Suspense } from 'react';
-
-import Info from "@page/Home/User/Info";
-import Token from "@page/Home/User/Token";
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Loading from '@component/Loading';
-
+import { createRouteList, filterRoute } from '@util/createRoute';
 export interface UserProps {
 
 }
-
+const routeList = filterRoute('user')
+const routesMap = createRouteList(routeList);
 const User: React.SFC<UserProps> = () => {
     return (
         <Suspense fallback={<Loading />}>
             <Switch>
-                <Route path="/home/user/info" component={Info}></Route>
-                <Route path="/home/user/Token" component={Token}></Route>
-                <Redirect exact from="/home/user" to="/home/user/info" />
+
+                {routesMap}
+
             </Switch>
         </Suspense>
     );

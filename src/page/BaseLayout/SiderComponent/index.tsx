@@ -8,6 +8,8 @@ import { routes, routeType } from "@page/Home/router";
 
 import { MyIcon } from '@component/MyIcon';
 
+import { matchPath } from "@util/index"
+
 import SubMenu from 'antd/lib/menu/SubMenu';
 
 import styles from '../index.less'
@@ -25,15 +27,16 @@ export const SiderComponent: React.SFC<SiderComponentProps> = (props) => {
     const [className, setClassName] = useState(styles.logo)
 
     const [selectedKeys, setSelectedKeys] = useState([''])
+    const [openKeys, setOpenKeys] = useState([''])
+
 
     const history = useHistory()
 
     const { location } = history
 
     useEffect(() => {
-
         setSelectedKeys([location.pathname])
-
+        setOpenKeys(matchPath(location.pathname))
     }, [location.pathname])
 
     useEffect(() => {
@@ -47,7 +50,6 @@ export const SiderComponent: React.SFC<SiderComponentProps> = (props) => {
 
 
     const filterClick = ({ key, keyPath }: any) => {
-
         const auth = localStorage.getItem('user')
 
         const controllerModal = () => {
@@ -114,7 +116,11 @@ export const SiderComponent: React.SFC<SiderComponentProps> = (props) => {
                 mode="inline"
                 defaultSelectedKeys={["/home/chart"]}
                 onClick={filterClick}
+                openKeys={openKeys}
+                onOpenChange={(openkeys) => { setOpenKeys(openkeys) }}
                 selectedKeys={selectedKeys} >
+
+
                 {routes.map(item => {
                     if (item.hasOwnProperty('children')) {
                         return handleSubMenuItem(item)

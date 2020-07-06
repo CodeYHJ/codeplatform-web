@@ -91,3 +91,11 @@ export const isTomorrow = (time: string) => {
     if (transformTime < startTimeOnDay + oneDayTime) return true
     return false
 }
+export const matchPath=(path:string)=>{
+    const target = path.match(/\/\w+\/\w+/);
+    if(Array.isArray(target)){
+        return [target[0]]
+    }else{
+        return ['']
+    }
+}
