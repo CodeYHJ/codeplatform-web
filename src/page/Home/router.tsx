@@ -13,7 +13,10 @@ export const Chart = React.lazy(() => import(/* webpackChunkName: "Chart"  ,webp
 
 export const Boards = React.lazy(() => import(/* webpackChunkName: "Boards"  ,webpackPrefetch: true*/ "@page/Home/Boards/index"))
 
+export const Task = React.lazy(() => import(/* webpackChunkName: "BoardsView"  ,webpackPrefetch: true*/ "@page/Home/Boards/Task/index"))
+
 export const BoardsView = React.lazy(() => import(/* webpackChunkName: "BoardsView"  ,webpackPrefetch: true*/ "@page/Home/Boards/Boards/index"))
+
 
 
 export interface routeType extends RouteProps {
@@ -32,6 +35,9 @@ export const routes: routeType[] = [
         children: [
             {
                 path: "/home/boards/boards", title: "Boards", svg: "icon-yonghu", component: BoardsView
+            },
+            {
+                path: "/home/boards/task", title: "Task", svg: "icon-yonghu", component: BoardsView
             },
         ]
     },

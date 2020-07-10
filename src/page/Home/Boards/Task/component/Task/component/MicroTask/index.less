@@ -1,0 +1,205 @@
+@import "~@/helper.less";
+
+.microTask {
+  .row_layout();
+  background: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  &:hover {
+    .tipLine_general {
+      width: 8px;
+    }
+    .tipLine_ordinary {
+      width: 8px;
+    }
+  }
+}
+.microTaskFormStyles {
+  :global {
+    .ant-form-item-no-colon {
+      height: 100%;
+    }
+  }
+}
+.labelStyle {
+  flex: 1;
+  .row_layout();
+  align-items: center;
+}
+.labelSvg {
+  margin-right: 5px;
+  font-size: 16px;
+}
+.content {
+  .col_layout();
+  flex: 1;
+  padding: 14px 10px 14px 0;
+  justify-content: center;
+}
+.endTime {
+  font-size: 12px;
+}
+.rang_tomorrow {
+  margin-top: 8px;
+  text-align: center;
+  padding: 1px 6px;
+  background: #1b9aee;
+  display: inline-block;
+  border-radius: 3px;
+  color: #ffffff;
+}
+.rang_week {
+  margin-top: 8px;
+  text-align: center;
+  padding: 1px 6px;
+  background: #1b9aee;
+  display: inline-block;
+  border-radius: 3px;
+  color: #ffffff;
+}
+.rang_far {
+  margin-top: 8px;
+  text-align: center;
+  padding: 1px 6px;
+  background: #f7f7f7;
+  display: inline-block;
+  border-radius: 3px;
+}
+.checkBox {
+  .row_layout();
+  align-items: center;
+  margin: 0 10px 0 20px;
+}
+.name {
+  flex: 1;
+  font-size: 14px;
+  padding-bottom: 5px;
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mTitle {
+  margin-bottom: 20px;
+  &:hover {
+    background: rgb(247, 247, 247);
+  }
+}
+.mTitleText {
+  position: relative;
+  word-break: break-word;
+  padding: 8px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  border-radius: 4px;
+}
+
+.buttons {
+  cursor: pointer;
+}
+.buttonBox {
+  .row_layout();
+  justify-content: center;
+}
+.button_general {
+  border-color: #bfbfbf;
+  color: #8c8c8c;
+  text-align: center;
+  &:hover {
+    border-color: #bfbfbf;
+    color: #8c8c8c;
+  }
+  &:focus {
+    border-color: #bfbfbf;
+    color: #8c8c8c;
+  }
+}
+
+.button_ordinary {
+  border-color: #87d2ff;
+  color: #1b9aee;
+  &:hover {
+    border-color: #87d2ff;
+    color: #1b9aee;
+  }
+  &:focus {
+    border-color: #87d2ff;
+    color: #1b9aee;
+  }
+}
+
+.button_warn {
+  border-color: #ffa941;
+  color: #fa8c15;
+  &:hover {
+    border-color: #ffa941;
+    color: #fa8c15;
+  }
+  &:focus {
+    border-color: #ffa941;
+    color: #fa8c15;
+  }
+}
+
+.unCheck {
+  background: rgba(38, 38, 38, 0.05);
+  color: #595959;
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 5px 0;
+}
+.check {
+  background: rgba(21, 173, 49, 0.1);
+  text-align: center;
+  color: #038a24;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 5px 0;
+}
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.checkIcon {
+  margin-right: 5px;
+}
+.remarkButton {
+  margin: 10px 0;
+  text-align: right;
+  .row_layout();
+  justify-content: flex-end;
+}
+.remark_cancle {
+  margin-right: 20px;
+}
+.tipLine {
+  width: 0;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.3s;
+}
+.tipLine_general {
+  background: #8c8c8c;
+}
+
+.tipLine_ordinary {
+  background: #1b9aee;
+}
+
+.tipLine_warn {
+  width: 8px;
+  background: #fa8c15;
+}
+
+.tipLine_danger {
+  width: 8px;
+  background: #ff4d4f;
+}

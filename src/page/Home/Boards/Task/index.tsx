@@ -7,11 +7,11 @@ import { getTaskRequest } from '@api/task';
 
 const { Content } = Layout
 
-export interface BoardProps {
+export interface NewTaskProps {
 
 }
 
-const Board: React.SFC<BoardProps> = () => {
+const NewTask: React.SFC<NewTaskProps> = () => {
     const [taskList, setTaskList] = useState([])
     const [render, setRender] = useState(false)
     useEffect(() => {
@@ -45,4 +45,4 @@ const Board: React.SFC<BoardProps> = () => {
     )
 }
 
-export default Board;
+export default NewTask;
