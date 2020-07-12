@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Layout, Row, Col } from 'antd';
+import { Layout, Row, Col, } from 'antd';
 import Task from "./component/Task";
 import styles from "./index.less"
 import CreateTask from './component/CreateTask';
 import { getTaskRequest } from '@api/task';
-
+import BoardTab from './component/BoardTab'
+import ItemBox from './component/ItemBox';
 const { Content } = Layout
 
 export interface BoardProps {
@@ -34,14 +35,19 @@ const Board: React.SFC<BoardProps> = () => {
         setRender(!render)
     }
     return (
-        <Layout className={styles.TaskPage}>
-            <Content>
-                <Row gutter={24} className={styles.coverStyle}>
-                    {taskList}
-                    <CreateTask handleRender={handleRender} />
-                </Row>
-            </Content>
-        </Layout>
+        <div className={styles.Board}>
+            <BoardTab />
+            <div className={styles.row}>
+                <ItemBox title="new" />
+                <ItemBox title="process" />
+                <ItemBox title="commit" />
+                <ItemBox title="done" />
+
+            </div>
+
+
+        </div>
+
     )
 }
 
