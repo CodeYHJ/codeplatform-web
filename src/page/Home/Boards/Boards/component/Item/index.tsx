@@ -1,13 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './index.less'
 import { Select } from 'antd';
 const { Option } = Select
-export enum BoardsType {
-    INIT = 0,
-    PROCESS,
-    COMMIT,
-    DONE
-}
+
 export interface ItemProps {
     context: string,
     type: BoardsType,
@@ -21,11 +16,11 @@ const Item: React.SFC<ItemProps> = (props) => {
             <div className={styles.state}>
                 <span className={styles.stateTex}>state</span>
                 <div className={styles.stateBox}>
-                    <Select defaultValue="new" style={{ width: 100 }} size="small" bordered={false}>
-                        {/* <Option value="new">new</Option> */}
-                        <Option value="process">process</Option>
-                        <Option value="commit">commit</Option>
-                        <Option value="done">done</Option>
+                    <Select defaultValue={props.type} style={{ width: 100 }} size="small" bordered={false}>
+                        <Option value="New">New</Option>
+                        <Option value="Approved">Approved</Option>
+                        <Option value="Committed">Committed</Option>
+                        <Option value="Done">Done</Option>
                     </Select>
                 </div>
 
@@ -34,4 +29,4 @@ const Item: React.SFC<ItemProps> = (props) => {
     );
 }
 
-export default Item;
+export default memo(Item);
