@@ -10,6 +10,7 @@ export interface UserProps {
 
 const routeList = filterRoute('boards')
 const routesMap = createRouteList(routeList);
+console.log(routeList)
 const User: React.SFC<UserProps> = () => {
     return (
         <Suspense fallback={<Loading />}>
