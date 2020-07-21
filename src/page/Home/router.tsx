@@ -5,6 +5,8 @@ import { RouteProps } from 'react-router-dom';
 
 export const User = React.lazy(() => import(/* webpackChunkName: "User" ,webpackPrefetch: true*/ "@page/Home/User/index"))
 
+export const Code = React.lazy(() => import(/* webpackChunkName: "Code" ,webpackPrefetch: true*/ "@page/Home/Code/index"))
+
 export const Info = React.lazy(() => import(/* webpackChunkName: "Info"  ,webpackPrefetch: true*/ "@page/Home/User/Info/index"))
 
 export const Token = React.lazy(() => import(/* webpackChunkName: "Token"  ,webpackPrefetch: true*/ "@page/Home/User/Token/index"))
@@ -15,7 +17,7 @@ export const Boards = React.lazy(() => import(/* webpackChunkName: "Boards"  ,we
 
 export const Task = React.lazy(() => import(/* webpackChunkName: "Task"  ,webpackPrefetch: true*/ "@page/Home/Boards/Task/index"))
 
-export const BoardsView = React.lazy(() => import(/* webpackChunkName: "BoardsView"  ,webpackPrefetch: true*/ "@page/Home/Boards/Boards/index"))
+export const BoardsView = React.lazy(() => import(/* webpackChunkName: "BoardsView"  ,webpackPrefetch: true*/ "@page/Home/Code/Boards/index"))
 
 
 
@@ -31,13 +33,24 @@ export interface routeType extends RouteProps {
 export const routes: routeType[] = [
     { path: "/home/chart", title: "工作台", svg: "icon-tongji", component: Chart },
     {
-        path: "/home/boards", title: "Boards", svg: "icon-renwu1", component: Boards,
+        path: "/home/boards",
+        title: "Boards",
+        svg: "icon-renwu1",
+        component: Boards,
         children: [
             {
-                path: "/home/boards/boards", title: "Boards", svg: "icon-yonghu", component: BoardsView
-            },
-            {
                 path: "/home/boards/task", title: "Task", svg: "icon-yonghu", component: Task
+            },
+        ]
+    },
+    {
+        path: '/home/code',
+        svg: "icon-code",
+        title: 'Code',
+        component: Code,
+        children: [
+            {
+                path: "/home/code/boards", title: "Boards", svg: "icon-yonghu", component: BoardsView
             },
         ]
     },

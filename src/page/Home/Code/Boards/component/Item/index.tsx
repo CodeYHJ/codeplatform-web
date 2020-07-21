@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import styles from './index.less'
 import { Select } from 'antd';
+import { BoardsType } from '../..';
 const { Option } = Select
 
 export interface ItemProps {

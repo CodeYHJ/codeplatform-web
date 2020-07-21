@@ -1,7 +1,8 @@
 import React, { useState, memo } from 'react';
 import styles from './index.less'
 import Item from '../Item';
-import { BoardsType } from '../TabType';
+import { BoardsType } from '../..';
+// import { BoardsType } from '../TabType';
 export interface ItemBoxProps {
     title: string,
     type: BoardsType
