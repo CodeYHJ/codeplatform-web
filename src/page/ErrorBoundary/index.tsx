@@ -1,8 +1,9 @@
 
 import React from "react";
-const fundebug = require("fundebug-javascript");
 
-fundebug.apikey = "af6f0cc5d362757b68e3f32469faf456cc4eb3d7f3b79cf86e9776d9faf1c901";
+// const fundebug = require("fundebug-javascript");
+
+// fundebug.apikey = "af6f0cc5d362757b68e3f32469faf456cc4eb3d7f3b79cf86e9776d9faf1c901";
 
 import styles from "./index.less"
 export class ErrorBoundary extends React.Component<any, { hasError: boolean }> {
@@ -17,11 +18,11 @@ export class ErrorBoundary extends React.Component<any, { hasError: boolean }> {
         this.setState({ hasError: true });
         // 将报错发送到Fundebug
         if (process.env.NODE_ENV === "production") {
-            fundebug.notifyError(error, {
-                metaData: {
-                    info: info
-                }
-            });
+            // fundebug.notifyError(error, {
+            //     metaData: {
+            //         info: info
+            //     }
+            // });
         }
 
     }
